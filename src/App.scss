@@ -1,0 +1,145 @@
+.App {
+  width: 100%;
+  .header {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    &__upper-row {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #aeaeae;
+      align-items: center;
+      .phone-number {
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .buttons-menu {
+        display: flex;
+        .btn-header {
+          background: #07b395;
+          width: 50px;
+          height: 50px;
+          border: 1px solid #06816c;;
+        }
+      }
+    }
+
+    &__bottom-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .logo-items {
+        display: flex;
+        align-items: center;
+        img {
+          width: 50px;
+          height: 50px;
+        }
+
+        .text-icon {
+          font-size: 14px;
+          font-weight: bold;
+          margin-left: 15px;
+        }
+      }
+      .dropdown-menu {
+        .dropdown-item {
+          margin-left: 15px;
+          border: none;
+        }
+      }
+    }
+  }
+  .home-main-logo {
+    width: 100%;
+    height: 300px;
+    background: #07b395;
+  }
+  .car-brands {
+    width: 100%;
+    max-width: 1200px;
+    margin: 15px auto;
+    &__input-find-car {
+      display: flex;
+      .btn-search {
+        width: 100px;
+        margin-left: 25px;
+        -webkit-box-shadow: 1px 22px 24px -10px rgba(0,0,0,0.4);
+        box-shadow: 1px 22px 24px -10px rgba(0,0,0,0.4);
+      }
+      .input-search {
+        -webkit-box-shadow: 1px 22px 24px -10px rgba(0,0,0,0.4);
+        box-shadow: 1px 22px 24px -10px rgba(0,0,0,0.4);
+      }
+    }
+    &__all-brands {
+      margin-top: 30px;
+
+      .all-brands-title {
+        font-size: 35px;
+        text-align: center;
+      }
+
+      .all-brands-component {
+        width: 100%;
+        height: 400px;
+        background: #07b395;
+      }
+    }
+  }
+  .profitable-offers {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    &__title {
+      text-align: center;
+      font-size: 35px;
+    }
+    &__items {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      .offer-item {
+        width: 255px;
+        height: 350px;
+        background: #07b395;
+        border: 1px solid #06725e;
+
+      }
+    }
+
+
+  }
+  .test-drive-registration {
+    width: 100%;
+    max-width: 1200px;
+    margin: 25px auto;
+    display: flex;
+    justify-content: space-between;
+    .active-block {
+      flex: 1;
+      &__title {
+        font-size: 25px;
+        text-align: center;
+      }
+      &__pluses {
+        margin-top: 25px;
+        .pluses-items {
+          padding: 0;
+          li {
+            margin-top: 20px;
+            list-style-type: none;
+            font-size: 22px;
+          }
+        }
+      }
+    }
+    .img-test-drive{
+      background: #07b395;
+      width: 500px;
+      height: 300px;
+    }
+  }
+}
