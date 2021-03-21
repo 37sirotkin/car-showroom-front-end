@@ -21,7 +21,19 @@
           background: #07b395;
           width: 50px;
           height: 50px;
-          border: 1px solid #06816c;;
+          border: 1px solid #0f6957;
+          display: flex;
+          justify-content: center;
+          align-content: center;
+          &:hover {
+            background: #0f6957;
+            transition: 0.2s;
+            cursor: pointer;
+          }
+          &__icon {
+            color: white;
+            font-size: 44px;
+          }
         }
       }
     }
@@ -118,28 +130,128 @@
     margin: 25px auto;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     .active-block {
       flex: 1;
+
       &__title {
         font-size: 25px;
         text-align: center;
       }
       &__pluses {
         margin-top: 25px;
+
         .pluses-items {
           padding: 0;
+
           li {
             margin-top: 20px;
             list-style-type: none;
             font-size: 22px;
+            span {
+              margin-left: 25px;
+            }
           }
+
         }
+      }
+      .btn-sign-up {
+        margin-top: 15px;
       }
     }
     .img-test-drive{
       background: #07b395;
       width: 500px;
       height: 300px;
+    }
+  }
+  .new-staff {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    &__title {
+      &__big {
+        font-size: 35px;
+        text-align: center;
+      }
+      &__small {
+        font-size: 25px;
+        text-align: center;
+      }
+    }
+    &__block {
+      margin-top: 25px;
+      &__row {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 25px;
+        &__item {
+          width: 220px;
+          height: 350px;
+          background: #07b395;
+          border: 1px solid #027563;
+        }
+      }
+
+
+    }
+  }
+  .footer {
+    background: black;
+    margin-top: 25px;
+    &__information {
+      display: flex;
+      justify-content: center;
+      &__ask_question {
+        a {
+          color: white;
+          .span-text {
+            font-size: 15px;
+          }
+        }
+      }
+      &__phone {
+        margin-left: 25px;
+        &__icon{
+          color: white;
+        }
+        &__span-text {
+          font-size: 15px;
+          color: white;
+        }
+      }
+      &__working_hours {
+        margin-left: 25px;
+        span {
+          color: white;
+          font-size: 15px;
+        }
+      }
+    }
+    &__social {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+      &__icon {
+        color: white;
+        font-size: 30px;
+        margin-left: 15px;
+      }
+    }
+    &__agreement {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+      &__years {
+        color: white;
+        font-size: 15px;
+
+      }
+      a {
+        margin-left: 15px;
+        color: white;
+      }
     }
   }
 }
