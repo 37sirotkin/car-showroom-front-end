@@ -9,6 +9,10 @@ import {
     PhoneOutlined,
     SearchOutlined, ShoppingCartOutlined, TwitterOutlined, UserOutlined, YoutubeOutlined
 } from '@ant-design/icons';
+import mainLogo from "../src/img/mp_main_logo.jpg"
+import testDriveLogo from "../src/img/mp_test_drive.jpg"
+import repairCarLogo from "../src/img/mg_repair_car.jpg"
+import AllBrands from "./components/home-page/all-brands/AllBrands";
 
 
 function App() {
@@ -28,6 +32,21 @@ function App() {
         </Menu>
     )
 
+    const catalog = (
+        <Menu>
+            <Menu.Item>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+                    Автомобили
+                </a>
+            </Menu.Item>
+            <Menu.Item>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
+                    Запасные части
+                </a>
+            </Menu.Item>
+        </Menu>
+    )
+
     return (
         <div className="App">
             <header className="header">
@@ -40,10 +59,10 @@ function App() {
                             <UserOutlined className="btn-header__icon"/>
                         </div>
                         <div className="btn-header">
-                            <ShoppingCartOutlined className="btn-header__icon" />
+                            <ShoppingCartOutlined className="btn-header__icon"/>
                         </div>
                         <div className="btn-header">
-                            <MenuOutlined className="btn-header__icon" />
+                            <MenuOutlined className="btn-header__icon"/>
                         </div>
                     </div>
                 </div>
@@ -61,7 +80,7 @@ function App() {
                                 МЕНЮ <DownOutlined/>
                             </Button>
                         </Dropdown>
-                        <Dropdown className="dropdown-item" overlay={menu}>
+                        <Dropdown className="dropdown-item" overlay={catalog}>
                             <Button>
                                 КАТАЛОГ <DownOutlined/>
                             </Button>
@@ -71,7 +90,7 @@ function App() {
                 </div>
             </header>
             <div className="home-main-logo">
-
+                <img src={mainLogo} alt="main-logo"/>
             </div>
             <div className="car-brands">
                 <div className="car-brands__input-find-car">
@@ -84,9 +103,7 @@ function App() {
                     <div className="all-brands-title">
                         ВСЕ МАРКИ
                     </div>
-                    <div className="all-brands-component">
-
-                    </div>
+                    <AllBrands/>
                 </div>
             </div>
             <div className="profitable-offers">
@@ -124,7 +141,7 @@ function App() {
                     <Button className="btn-main btn-sign-up" type="primary" size="large">Записаться</Button>
                 </div>
                 <div className="img-test-drive">
-
+                    <img src={testDriveLogo} alt="test-drive-logo"/>
                 </div>
             </div>
             <div className="new-staff">
@@ -183,7 +200,8 @@ function App() {
                     <div className="active-block__pluses">
                         <ul className="pluses-items">
                             <li><CheckCircleOutlined className="done-icon"/><span>Официальный сервис</span></li>
-                            <li><CheckCircleOutlined className="done-icon"/><span>Сохранение гарантии на автомобиль</span></li>
+                            <li><CheckCircleOutlined
+                                className="done-icon"/><span>Сохранение гарантии на автомобиль</span></li>
                             <li><CheckCircleOutlined className="done-icon"/><span>Быстрая запись</span></li>
                             <li><CheckCircleOutlined className="done-icon"/><span>Никаких очередей</span></li>
                         </ul>
@@ -191,13 +209,13 @@ function App() {
                     <Button className="btn-main btn-sign-up" type="primary" size="large">Записаться</Button>
                 </div>
                 <div className="img-test-drive">
-
+                    <img src={repairCarLogo} alt="repair-car-logo"/>
                 </div>
             </div>
             <footer className="footer">
                 <div className="footer__information">
                     <div className="footer__information__ask_question">
-                        <a href="#"><MessageOutlined /><span className="span-text">Задать вопрос</span></a>
+                        <a href="#"><MessageOutlined/><span className="span-text">Задать вопрос</span></a>
                     </div>
                     <div className="footer__information__phone">
                         <PhoneOutlined className="footer__information__phone__icon"/>
