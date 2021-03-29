@@ -1,17 +1,25 @@
 import React, {useEffect} from "react";
 import "./all-brands.scss"
 import {useDispatch, useSelector} from "react-redux";
-import {getCars} from "../../redux/actions/carActions";
+import {getMarks} from "../../redux/actions/markActions";
+import AllBrandsItem from "./AllBrandsItem";
 
 const AllBrands = () => {
     const dispatch = useDispatch();
-    useEffect(() => dispatch(getCars()), []);
-    const allCars = useSelector(state => state.cars.cars)
-    const allBrands = allCars.map(car => car.mark)
-    console.log(allBrands);
+    useEffect(() => dispatch(getMarks()), []);
+    const marks = useSelector(state => state.marks.marks)
     return (
         <div className="all-brands">
-            {allBrands.map(brand => <div>{brand}</div>)}
+            <div className="all-brands__column">
+                {marks.map(mark => <AllBrandsItem mark={mark}/>)}
+            </div>
+            <div className="all-brands__column">
+
+            </div>
+            <div className="all-brands__column">
+
+            </div>
+
         </div>
     )
 }

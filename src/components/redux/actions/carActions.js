@@ -7,6 +7,6 @@ export const getCars = () => {
     return async dispatch => {
         const request = await axios.get(`${URL}getCars`);
         console.log(request);
-        dispatch({type: GET_CARS, payload: request.data})
+        dispatch({type: GET_CARS, payload: request.data.name})
     }
 }

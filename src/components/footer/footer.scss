@@ -1,0 +1,71 @@
+.footer {
+  background: black;
+  margin-top: 25px;
+
+  &__information {
+    display: flex;
+    justify-content: center;
+
+    &__ask_question {
+      a {
+        color: white;
+
+        .span-text {
+          font-size: 15px;
+        }
+      }
+    }
+
+    &__phone {
+      margin-left: 25px;
+
+      &__icon {
+        color: white;
+      }
+
+      &__span-text {
+        font-size: 15px;
+        color: white;
+      }
+    }
+
+    &__working_hours {
+      margin-left: 25px;
+
+      span {
+        color: white;
+        font-size: 15px;
+      }
+    }
+  }
+
+  &__social {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+
+    &__icon {
+      color: white;
+      font-size: 30px;
+      margin-left: 15px;
+      cursor: pointer;
+    }
+  }
+
+  &__agreement {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+
+    &__years {
+      color: white;
+      font-size: 15px;
+
+    }
+
+    a {
+      margin-left: 15px;
+      color: white;
+    }
+  }
+}
