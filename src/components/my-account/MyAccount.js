@@ -4,44 +4,58 @@ import "./my-account.scss";
 import {BellOutlined, FileTextOutlined, InfoCircleOutlined, SearchOutlined} from "@ant-design/icons";
 import {Button, Input, Table} from "antd";
 
+const dataSource = [
+    {
+        key: '1',
+        name: 'Mike',
+        age: 32,
+        address: '10 Downing Street',
+    },
+    {
+        key: '2',
+        name: 'John',
+        age: 42,
+        address: '10 Downing Street',
+    },
+];
+
+const columns = [
+    {
+        title: 'Name',
+        dataIndex: 'name',
+        key: 'name',
+    },
+    {
+        title: 'Age',
+        dataIndex: 'age',
+        key: 'age',
+    },
+    {
+        title: 'Address',
+        dataIndex: 'address',
+        key: 'address',
+    },
+];
+
+const tabs = [{
+    id: 'order',
+    name: 'Заказы'
+}, {
+    id: 'requests',
+    name: 'Заявки на тест-драйв'
+}, {
+    id: 'records',
+    name: 'Записи на ТO'
+}]
+
 const MyAccount = () => {
 
-    const dataSource = [
-        {
-            key: '1',
-            name: 'Mike',
-            age: 32,
-            address: '10 Downing Street',
-        },
-        {
-            key: '2',
-            name: 'John',
-            age: 42,
-            address: '10 Downing Street',
-        },
-    ];
+    
+    const [activeTab, setActiveTab] = useState(tabs[0].id);
 
-    const columns = [
-        {
-            title: 'Name',
-            dataIndex: 'name',
-            key: 'name',
-        },
-        {
-            title: 'Age',
-            dataIndex: 'age',
-            key: 'age',
-        },
-        {
-            title: 'Address',
-            dataIndex: 'address',
-            key: 'address',
-        },
-    ];
-    const [activeTitle, setActiveTitle] = useState(null);
-
-    const btnTitleActive = () => {
-        activeTitle == null ? setActiveTitle("title-active") : setActiveTitle(null);
+    const btnChangeTab = (e) => {
+        const tab = e.currentTarget.dataset.tab;
+        setActiveTab(tab);
     }
 
     return (
@@ -87,10 +101,14 @@ const MyAccount = () => {
             </div>
             <div className="my-account__table-history">
                 <div className="my-account__table-history__row">
-                    <div key="1" className={"my-account__table-history__row__title " + activeTitle} onClick={btnTitleActive}>Заказы
-                    </div>
-                    <div key="2" className={"my-account__table-history__row__title " + activeTitle} onClick={btnTitleActive}>Заявки на тест-драйв</div>
-                    <div key="3" className={"my-account__table-history__row__title " + activeTitle} onClick={btnTitleActive}>Записи на ТО</div>
+                    {tabs.map(t => (
+                        <div key={t.id} 
+                            className={`my-account__table-history__row__title ${activeTab === t.id ? 'title-active' : ''}`} 
+                            onClick={btnChangeTab}
+                            data-tab={t.id}>
+                            {t.name}                            
+                        </div>))
+                    }                   
                 </div>
                 <div className="my-account__table-history__row">
                     <div className="my-account__table-history__row__table">
