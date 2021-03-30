@@ -2,14 +2,14 @@ import React, {useState} from "react";
 
 import "./my-account.scss";
 import {BellOutlined, FileTextOutlined, InfoCircleOutlined, SearchOutlined} from "@ant-design/icons";
-import {Button, Input, Table} from "antd";
+import {Button, Input, Table, Tabs} from "antd";
 
 const dataSource = [
     {
         key: '1',
-        name: 'Mike',
-        age: 32,
-        address: '10 Downing Street',
+        date: '22-01-2021',
+        coast: '4300p',
+        status: 'Принят',
     },
     {
         key: '2',
@@ -21,19 +21,19 @@ const dataSource = [
 
 const columns = [
     {
-        title: 'Name',
-        dataIndex: 'name',
-        key: 'name',
+        title: 'Дата',
+        dataIndex: 'date',
+        key: 'date',
     },
     {
-        title: 'Age',
-        dataIndex: 'age',
-        key: 'age',
+        title: 'Стоимость',
+        dataIndex: 'coast',
+        key: 'coast',
     },
     {
-        title: 'Address',
-        dataIndex: 'address',
-        key: 'address',
+        title: 'Статус',
+        dataIndex: 'status',
+        key: 'status',
     },
 ];
 
@@ -50,13 +50,15 @@ const tabs = [{
 
 const MyAccount = () => {
 
-    
     const [activeTab, setActiveTab] = useState(tabs[0].id);
 
     const btnChangeTab = (e) => {
         const tab = e.currentTarget.dataset.tab;
         setActiveTab(tab);
+
     }
+
+    const {TabPane} = Tabs;
 
     return (
         <div className="my-account">
@@ -100,20 +102,20 @@ const MyAccount = () => {
                 </div>
             </div>
             <div className="my-account__table-history">
-                <div className="my-account__table-history__row">
-                    {tabs.map(t => (
-                        <div key={t.id} 
-                            className={`my-account__table-history__row__title ${activeTab === t.id ? 'title-active' : ''}`} 
-                            onClick={btnChangeTab}
-                            data-tab={t.id}>
-                            {t.name}                            
-                        </div>))
-                    }                   
-                </div>
-                <div className="my-account__table-history__row">
-                    <div className="my-account__table-history__row__table">
-                        <Table className="table-item" dataSource={dataSource} columns={columns}/>
-                    </div>
+                <div className="my-account__table-history__title">
+                    <Tabs className="my-account__table-history__title__tabs" defaultActiveKey="1">
+                        <TabPane className="tab-item" tab="Заказы" key="1">
+                            <div className="my-account__table-history__row__table">
+                                <Table className="table-item" dataSource={dataSource} columns={columns}/>
+                            </div>
+                        </TabPane>
+                        <TabPane tab="Заявки на тест-драйв" key="2">
+                            <div>ЗАЯВКИ НА ТЕСТ ДРАЙВ</div>
+                        </TabPane>
+                        <TabPane tab="Записи на ТО" key="3">
+                            <div>ЗАПИСИ ТО</div>
+                        </TabPane>
+                    </Tabs>
                 </div>
                 <div className="my-account__table-history__row">
 

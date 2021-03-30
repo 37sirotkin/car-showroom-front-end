@@ -65,28 +65,28 @@
   }
 
   &__table-history {
+    width: 100%;
     margin-left: 35px;
     border: 1px solid black;
     padding: 15px;
-    &__row {
+    &__title {
       display: flex;
-      &__title {
-        font-size: 18px;
-        font-weight: bold;
-        margin-right: 35px;
 
-        &:hover {
-          color: #016657;
-          cursor: pointer;
-        }
-
-      }
-      &__table {
+      &__tabs {
         width: 100%;
-        .table-item {
-          width: 100%;
+        &__item {
+          font-size: 18px;
+          font-weight: bold;
+          margin-right: 35px;
+
+          &:hover {
+            color: #016657;
+            cursor: pointer;
+          }
+
         }
       }
+
     }
   }
 }
@@ -98,4 +98,16 @@
 .title-active {
   color: #158a76;
   border-bottom: 2px solid #0f6957;
+}
+
+.ant-tabs-tab-btn {
+  color: #158a76;
+}
+
+.ant-tabs-ink-bar {
+  background: #158a76;
+}
+
+.ant-tabs-tab-active{
+  color: #027563;
 }

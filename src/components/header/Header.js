@@ -3,6 +3,7 @@ import "./header.scss";
 import {DownOutlined, MenuOutlined, ShoppingCartOutlined, UserOutlined} from "@ant-design/icons";
 import {Button, Dropdown, Menu} from "antd";
 import {NavLink} from "react-router-dom";
+import mainLogo from "../../img/main_logo.jpg"
 
 const Header = () => {
     const menu = (
@@ -57,7 +58,7 @@ const Header = () => {
             <div className="header__bottom-row">
                 <div className="logo-items">
                     <NavLink to="/">
-                        <img src="https://i.pinimg.com/originals/61/38/f8/6138f8929efacc8b9187c80aded10d57.png"
+                        <img src={mainLogo}
                              alt="logo-icon"/>
                         <div className="text-icon">
                             ВАШ <br/> АВТОДИЛЕР
