@@ -1,11 +1,12 @@
 .home-page {
   .home-main-logo {
     width: 100%;
-    height: 434px;
+    height: 20%;
     background: #07b395;
 
     img {
       width: 100%;
+      height: 20%;
     }
   }
 
@@ -16,6 +17,7 @@
 
     &__input-find-car {
       display: flex;
+      justify-content: center;
 
       .btn-search {
         width: 100px;
@@ -27,6 +29,8 @@
       .input-search {
         -webkit-box-shadow: 1px 22px 24px -10px rgba(0, 0, 0, 0.4);
         box-shadow: 1px 22px 24px -10px rgba(0, 0, 0, 0.4);
+        width: 50%;
+
       }
     }
 
@@ -77,6 +81,8 @@
     align-items: center;
 
     .active-block {
+      display: flex;
+      flex-direction: column;
       flex: 1;
 
       &__title {
@@ -105,12 +111,14 @@
 
       .btn-sign-up {
         margin-top: 15px;
+        width: 120px;
+        margin-left: 300px;
       }
     }
 
     .img-test-drive {
       background: #07b395;
-      width: 500px;
+      width: 440px;
       height: 300px;
 
       img {

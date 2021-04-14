@@ -1,0 +1,108 @@
+.my-account-profile {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto;
+  &__account-settings {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+
+
+    &__personal-data {
+      width: 330px;
+      padding: 20px;
+      border: 1px solid #929292;
+      border-radius: 15px;
+      .title {
+        font-size: 22px;
+      }
+      .pass-row {
+        display: flex;
+        .change-pass {
+          font-size: 16px;
+          color: #158a76;
+          margin-left: 10px;
+        }
+      }
+      .db-row {
+        .bd-input {
+          cursor: pointer;
+        }
+      }
+      .calendar {
+        width: 100%;
+      }
+      .btn-save {
+        margin-top: 15px;
+      }
+
+    }
+    &__delete-account {
+      width: 330px;
+      margin-top: 30px;
+      padding: 20px;
+      border: 1px solid #929292;
+      border-radius: 15px;
+      .title-delete {
+        font-size: 22px;
+      }
+      .text-description {
+        margin-top: 15px;
+        font-size: 15px;
+        font-weight: bold;
+      }
+      .btn-delete-account {
+        margin-top: 15px;
+      }
+    }
+
+  }
+
+  &__table-history {
+    width: 100%;
+    margin-left: 35px;
+    border: 1px solid #929292;
+    border-radius: 15px;
+    padding: 15px;
+    &__title {
+      display: flex;
+
+      &__tabs {
+        width: 100%;
+        .tab-item {
+          &:hover {
+            color: #016657;
+            cursor: pointer;
+          }
+          .order-table {
+            min-height: calc(40vh);
+          }
+          .extra-blocks {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            &__main-block {
+              padding: 10px;
+              width: 320px;
+              height: 130px;
+              border: 1px solid #8c8c8c;
+              border-radius: 5px;
+              &__title {
+                font-size: 16px;
+                text-align: center;
+              }
+              &__history {
+                span {
+                  font-size: 16px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
+

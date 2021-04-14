@@ -8,87 +8,28 @@
   &__nav-icons {
     display: flex;
     flex-direction: column;
-    span {
-      font-size: 60px;
-      color: #158a76;
-      margin-bottom: 100px;
-      &:hover {
-        color: #00473c;
-        cursor: pointer;
-      }
-    }
-  }
-  &__account-settings {
-    margin-left: 30px;
-    display: flex;
-    flex-direction: column;
 
-
-    &__personal-data {
-      width: 330px;
-      padding: 20px;
-      border: 1px solid #4c5655;
-      .title {
-        font-size: 22px;
-      }
-      .pass-row {
-        display: flex;
-        .change-pass {
-          font-size: 16px;
-          color: #158a76;
-          margin-left: 10px;
-        }
-      }
-      .btn-save {
-        margin-top: 15px;
-      }
-
-    }
-    &__delete-account {
-      width: 330px;
-      margin-top: 30px;
-      padding: 20px;
-      border: 1px solid #4c5655;
-      .title-delete {
-        font-size: 22px;
-      }
-      .text-description {
-        margin-top: 15px;
-        font-size: 15px;
-        font-weight: bold;
-      }
-      .btn-delete-account {
-        margin-top: 15px;
-      }
-    }
-
-  }
-
-  &__table-history {
-    width: 100%;
-    margin-left: 35px;
-    border: 1px solid black;
-    padding: 15px;
-    &__title {
+    .nav-item {
+      margin-bottom: 50px;
       display: flex;
-
-      &__tabs {
-        width: 100%;
-        &__item {
-          font-size: 18px;
-          font-weight: bold;
-          margin-right: 35px;
-
-          &:hover {
-            color: #016657;
-            cursor: pointer;
-          }
-
+      flex-direction: column;
+      align-items: center;
+      .nav-name {
+        font-size: 20px;
+      }
+      .icon-item {
+        font-size: 80px;
+        color: #158a76;
+        &:hover {
+          color: #00473c;
+          cursor: pointer;
         }
       }
-
     }
+
+
   }
+
 }
 
 .text-data {
@@ -104,10 +45,12 @@
   color: #158a76;
 }
 
+
 .ant-tabs-ink-bar {
   background: #158a76;
 }
 
-.ant-tabs-tab-active{
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
   color: #027563;
+  font-weight: 500;
 }

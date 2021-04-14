@@ -1,6 +1,7 @@
 .footer {
   background: black;
   margin-top: 25px;
+  flex-shrink: 0;
 
   &__information {
     display: flex;

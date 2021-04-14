@@ -1,8 +1,7 @@
-import React, {useState} from "react";
-
-import "./my-account.scss";
-import {BellOutlined, FileTextOutlined, InfoCircleOutlined, SearchOutlined} from "@ant-design/icons";
-import {Button, Input, Table, Tabs} from "antd";
+import React from "react";
+import "./my-account-profile.scss";
+import {Button, DatePicker, Input, Table, Tabs} from "antd";
+import moment from "moment";
 
 const dataSource = [
     {
@@ -48,27 +47,17 @@ const tabs = [{
     name: 'Записи на ТO'
 }]
 
-const MyAccount = () => {
+const {TabPane} = Tabs;
 
-    const [activeTab, setActiveTab] = useState(tabs[0].id);
+const changeData = (value) => {
+    console.log(moment(value).format("DD-MM-YYYY"));
+}
 
-    const btnChangeTab = (e) => {
-        const tab = e.currentTarget.dataset.tab;
-        setActiveTab(tab);
-
-    }
-
-    const {TabPane} = Tabs;
-
+const MyAccountProfile = () => {
     return (
-        <div className="my-account">
-            <div className="my-account__nav-icons">
-                <InfoCircleOutlined/>
-                <FileTextOutlined/>
-                <BellOutlined/>
-            </div>
-            <div className="my-account__account-settings">
-                <div className="my-account__account-settings__personal-data">
+        <div className="my-account-profile">
+            <div className="my-account-profile__account-settings">
+                <div className="my-account-profile__account-settings__personal-data">
                     <div className="title">Персональные данные</div>
                     <div className="full-name-row">
                         <div className="text-data">ФИО:</div>
@@ -82,9 +71,11 @@ const MyAccount = () => {
                         <div className="text-data">Телефон:</div>
                         <Input className="phone-input"/>
                     </div>
-                    <div className="bd-row">
+                    <div className="db-row">
                         <div className="text-data">Дата Рождения:</div>
-                        <Input className="bd-input"/>
+                        <Input.Group compact>
+                            <DatePicker onChange={changeData} placeholder={"Data from DB"} className="calendar" />
+                        </Input.Group>
                     </div>
                     <div className="pass-row">
                         <div className="text-data">Пароль:</div>
@@ -92,7 +83,7 @@ const MyAccount = () => {
                     </div>
                     <Button className="btn-save">Сохранить</Button>
                 </div>
-                <div className="my-account__account-settings__delete-account">
+                <div className="my-account-profile__account-settings__delete-account">
                     <div className="title-delete">Удаление аккаунта</div>
                     <div className="text-description">
                         Как только Ваш Личный Кабинет будет удален, <br/> Вы автоматически выйдете из системы и больше
@@ -101,12 +92,28 @@ const MyAccount = () => {
                     <Button className="btn-delete-account">Удалить аккаунт</Button>
                 </div>
             </div>
-            <div className="my-account__table-history">
-                <div className="my-account__table-history__title">
-                    <Tabs className="my-account__table-history__title__tabs" defaultActiveKey="1">
+            <div className="my-account-profile__table-history">
+                <div className="my-account-profile__table-history__title">
+                    <Tabs className="my-account-profile__table-history__title__tabs" defaultActiveKey="1">
                         <TabPane className="tab-item" tab="Заказы" key="1">
-                            <div className="my-account__table-history__row__table">
+                            <div className="order-table">
                                 <Table className="table-item" dataSource={dataSource} columns={columns}/>
+                            </div>
+                            <div className="extra-blocks">
+                                <div className="extra-blocks__main-block">
+                                    <div className="extra-blocks__main-block__title">
+                                        Записаться на тест-драйв
+                                    </div>
+                                </div>
+                                <div className="extra-blocks__main-block">
+                                    <div className="extra-blocks__main-block__title">
+                                        Записаться на ТО
+                                    </div>
+                                    <div className="extra-blocks__main-block__history">
+                                        <span>Последнее прохождение ТО: {"Data from DB"}</span>
+                                    </div>
+                                    <Button type="primary" className="btn-main">Записаться</Button>
+                                </div>
                             </div>
                         </TabPane>
                         <TabPane tab="Заявки на тест-драйв" key="2">
@@ -125,4 +132,4 @@ const MyAccount = () => {
     )
 }
 
-export default MyAccount;
+export default MyAccountProfile;

@@ -7,6 +7,7 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 code {
@@ -22,5 +23,6 @@ code {
 
   &:hover {
     background: #158a76;
+    color: white;
   }
 }

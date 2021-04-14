@@ -70,6 +70,9 @@
       .dropdown-item {
         margin-left: 15px;
         border: none;
+        &:hover {
+          color: #158a76;
+        }
       }
     }
   }
