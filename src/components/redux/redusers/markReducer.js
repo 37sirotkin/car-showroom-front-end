@@ -1,7 +1,9 @@
 import {GET_MARKS} from "../types";
 
 const initialState = {
-    marks: [],
+    marks: [
+
+    ]
 };
 
 export const markReducer = (state = initialState, action) => {

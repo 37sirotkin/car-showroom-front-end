@@ -1,0 +1,14 @@
+.test-drive-path {
+  &__choose-path{
+    display: flex;
+  }
+  &__path-item {
+    &__name {
+      font-weight: bold;
+    }
+    &__img {
+      width: 300px;
+      height: 150px;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.test-drive-time {
+  width: 100%;
+  &__title {
+    text-align: center;
+  }
+  &__block {
+    display: flex;
+    &__available-time {
+      display: flex;
+      .btn-item {
+        display: block;
+        margin-left: 15px;
+      }
+    }
+  }
+}
+
+
+
+
+
+.site-calendar-demo-card {
+  width: 300px;
+  border: 1px solid #f0f0f0;
+  border-radius: 2px;
+}

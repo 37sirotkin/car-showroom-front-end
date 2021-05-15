@@ -1,0 +1,10 @@
+.test-drive {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &__title {
+    font-weight: bold;
+    text-align: center;
+  }
+}

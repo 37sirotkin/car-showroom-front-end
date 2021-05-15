@@ -9,9 +9,9 @@ const Header = () => {
     const menu = (
         <Menu>
             <Menu.Item>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+                <NavLink to="/testDrive">
                     Запись на тест-драйв
-                </a>
+                </NavLink>
             </Menu.Item>
             <Menu.Item>
                 <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">

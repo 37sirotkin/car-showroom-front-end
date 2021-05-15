@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 const AllBrandsItem = ({ mark }) => {
     return (
         <div className="all-brands-item">
-            <NavLink to="/allBrands">{mark.id_mark}.{mark.name}</NavLink>
+            <NavLink to="/allBrands">{mark.mark_id}.{mark.name}</NavLink>
         </div>
     )
 }

@@ -7,6 +7,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
 import MyAccount from "./components/my-account/my-account";
 import ChooseAuto from "./components/choose-auto/choose-auto";
 import AutoItem from "./components/auto-item/auto-item";
+import TestDrive from "./components/test-drive/test-drive";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
                         <Route exact path="/myAccount" component={MyAccount}/>
                         <Route exact path="/allBrands" component={ChooseAuto}/>
                         <Route exact path="/autoItem" component={AutoItem}/>
+                        <Route exact path="/testDrive" component={TestDrive}/>
                     </Switch>
                 </div>
                 <Footer className="Footer"/>
