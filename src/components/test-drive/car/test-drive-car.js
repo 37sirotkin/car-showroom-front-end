@@ -5,6 +5,7 @@ import {SearchOutlined} from "@ant-design/icons";
 import {useDispatch, useSelector} from "react-redux";
 import {getMarks} from "../../redux/actions/markActions";
 import {getCars} from "../../redux/actions/carActions";
+import TestDriveCarItem from "./test-drive-car-item";
 
 
 const TestDriveCar = () => {
@@ -23,11 +24,11 @@ const TestDriveCar = () => {
     const markOnChange = (value) => {
         setSelectMark(value);
         const findMark = marks.find(mark => mark.name === value).mark_id;
-        setViewCars(cars.map(car => car.markMarkId === findMark));
-        console.log(allViewCars);
-
+        const selectedCars = cars.filter(car => car.markMarkId === findMark);
+        setViewCars(selectedCars);
+        console.log(selectedCars);
     }
-
+debugger;
 
     return (
         <div className="test-drive-car">
@@ -40,7 +41,7 @@ const TestDriveCar = () => {
                 />
                 <SearchOutlined className="test-drive-car__input__icon"/>
             </div>
-            <img className="test-drive-car__img-car" src="https://cutt.ly/5cOYMSo" alt="img-car"/>
+            {allViewCars.map(car => <TestDriveCarItem key={car.id_car} img={car.img} mark={selectMark} model={car.model} carId={car.id_car}/>)}
         </div>
     )
 }

@@ -63,6 +63,7 @@ const MyAccountProfile = () => {
     console.log("User: "+ users);
 
     return (
+        users.length > 0 && 
         <div className="my-account-profile">
             <div className="my-account-profile__account-settings">
                 <div className="my-account-profile__account-settings__personal-data">

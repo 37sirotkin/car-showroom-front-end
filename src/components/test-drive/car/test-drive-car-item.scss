@@ -1,0 +1,11 @@
+.test-drive-car-item {
+    display: flex;
+    justify-content: center;
+    &__car-name {
+        font-size: 18px;
+    }
+    &__img {
+        height: 220px;
+        width: 300px;
+    }
+}
