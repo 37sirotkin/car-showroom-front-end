@@ -1,12 +1,15 @@
 import axios from "axios";
 import {GET_CARS} from "../types";
+import {URL} from "./url"
 
-const URL = "http://localhost:3001/";
-
-export const getCars = () => {
+export const getCars = (idCar) => {
     return async dispatch => {
-        const request = await axios.get(`${URL}getCars`);
-        console.log(request);
-        dispatch({type: GET_CARS, payload: request.data.name})
+        if (idCar) {
+            const request = await axios.get(`${URL}cars?markId=${idCar}`);
+            dispatch({type: GET_CARS, payload: request.data})
+        } else {
+            const request = await axios.get(`${URL}cars`);
+            dispatch({type: GET_CARS, payload: request.data})
+        }
     }
 }

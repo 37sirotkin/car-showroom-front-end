@@ -1,7 +1,10 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./my-account-profile.scss";
 import {Button, DatePicker, Input, Table, Tabs} from "antd";
 import moment from "moment";
+import {useDispatch, useSelector} from "react-redux";
+import {getMarks} from "../../redux/actions/markActions";
+import {getUsers} from "../../redux/actions/userAction";
 
 const dataSource = [
     {
@@ -54,6 +57,11 @@ const changeData = (value) => {
 }
 
 const MyAccountProfile = () => {
+    const dispatch = useDispatch();
+    useEffect(() => dispatch(getUsers()), []);
+    const users = useSelector(state => state.users.users);
+    console.log("User: "+ users);
+
     return (
         <div className="my-account-profile">
             <div className="my-account-profile__account-settings">
@@ -61,20 +69,20 @@ const MyAccountProfile = () => {
                     <div className="title">Персональные данные</div>
                     <div className="full-name-row">
                         <div className="text-data">ФИО:</div>
-                        <Input className="full-name-input"/>
+                        <Input className="full-name-input" value={users[2].surname + ' ' + users[2].first_name}/>
                     </div>
                     <div className="email-row">
                         <div className="text-data">Email:</div>
-                        <Input className="email-input"/>
+                        <Input className="email-input" value={users[2].email}/>
                     </div>
                     <div className="phone-row">
                         <div className="text-data">Телефон:</div>
-                        <Input className="phone-input"/>
+                        <Input className="phone-input" value={users[2].phone}/>
                     </div>
                     <div className="db-row">
                         <div className="text-data">Дата Рождения:</div>
                         <Input.Group compact>
-                            <DatePicker onChange={changeData} placeholder={"Data from DB"} className="calendar" />
+                            <DatePicker onChange={changeData} placeholder={users[2].birthday} className="calendar"  />
                         </Input.Group>
                     </div>
                     <div className="pass-row">

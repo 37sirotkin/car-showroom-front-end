@@ -8,7 +8,7 @@ import testDriveLogo from "../../img/mp_test_drive.jpg";
 import repairCarLogo from "../../img/mg_repair_car.jpg";
 import ProfitableOffers from "./profitable-offers/profitable-offers";
 
-const HomePage = () => {
+const HomePage = ({setSelectedMark}) => {
     return (
         <div className="home-page">
             <div className="home-main-logo">
@@ -25,7 +25,7 @@ const HomePage = () => {
                     <div className="all-brands-title">
                         ВСЕ МАРКИ
                     </div>
-                    <AllBrands/>
+                    <AllBrands setSelectedMark={setSelectedMark}/>
                 </div>
             </div>
             <div className="profitable-offers">
