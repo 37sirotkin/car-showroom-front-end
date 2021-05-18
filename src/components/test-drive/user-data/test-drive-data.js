@@ -1,49 +1,86 @@
-import React from "react";
+import React, {useState} from "react";
 import "./test-drive-data.scss";
 import {Button, Form, Input, InputNumber} from "antd";
+import {useDispatch} from "react-redux";
+import {postTestDrive} from "../../redux/actions/testDriveAction";
 
-const TestDriveData = () => {
+const TestDriveData = ({selectCar, selectPath, selectTime}) => {
+
+    const dispatch = useDispatch();
+
+
+    const [formInfo, setFormInfo] = useState({
+        exp: null,
+        name: null,
+        surname: null,
+        phone: null,
+        email: null
+    });
 
     const layout = {
         labelCol: { span: 3 },
         wrapperCol: { span: 8 },
     };
 
-    /* eslint-disable no-template-curly-in-string */
-    const validateMessages = {
-        required: '${label} is required!',
-        types: {
-            email: '${label} is not a valid email!',
-            number: '${label} is not a valid number!',
-        },
-        number: {
-            range: '${label} must be between ${min} and ${max}',
-        },
-    };
-    /* eslint-enable no-template-curly-in-string */
 
 
+    const submitTestDrive = () => {
+        const postObj = {
+            date_of_td: selectTime,
+            status: false,
+            id_car: selectCar,
+            id_user: 2,
+            experience: formInfo.exp,
+            first_name: formInfo.name,
+            surname: formInfo.surname,
+            phone: formInfo.phone,
+            email: formInfo.email,
+            path: selectPath
+        }
+        dispatch(postTestDrive(postObj));
+        console.log(postObj)
+    }
 
     return (
         <div className="test-drive-data">
             <Form {...layout} name="nest-messages">
                 <Form.Item label="Водительский стаж">
-                    <Input/>
+                    <Input onChange={e => {
+                        const newObj = {...formInfo}
+                        newObj.exp = e.target.value;
+                        setFormInfo(newObj);
+                    }}/>
                 </Form.Item>
                 <Form.Item label="Имя">
-                    <Input />
+                    <Input onChange={e => {
+                        const newObj = {...formInfo}
+                        newObj.name = e.target.value;
+                        setFormInfo(newObj);
+                    }} />
                 </Form.Item>
                 <Form.Item label="Фамилия">
-                    <Input/>
+                    <Input onChange={e => {
+                        const newObj = {...formInfo}
+                        newObj.surname = e.target.value;
+                        setFormInfo(newObj);
+                    }}/>
                 </Form.Item>
                 <Form.Item label="Телефон">
-                    <Input/>
+                    <Input onChange={e => {
+                        const newObj = {...formInfo}
+                        newObj.phone = e.target.value;
+                        setFormInfo(newObj);
+                    }}/>
                 </Form.Item>
                 <Form.Item label="E-Mail">
-                    <Input/>
+                    <Input onChange={e => {
+                        const newObj = {...formInfo}
+                        newObj.email = e.target.value;
+                        setFormInfo(newObj);
+                    }}/>
                 </Form.Item>
                 <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-                    <Button className="btn-main" type="primary" htmlType="submit">
+                    <Button onClick={() => submitTestDrive()} className="btn-main" type="primary" htmlType="submit">
                         Записаться
                     </Button>
                 </Form.Item>

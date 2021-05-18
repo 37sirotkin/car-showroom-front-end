@@ -5,6 +5,7 @@ import moment from "moment";
 import {useDispatch, useSelector} from "react-redux";
 import {getMarks} from "../../redux/actions/markActions";
 import {getUsers} from "../../redux/actions/userAction";
+import MyAccountProfileTestDrive from "./my-account-profile-test-drive";
 
 const dataSource = [
     {
@@ -60,7 +61,6 @@ const MyAccountProfile = () => {
     const dispatch = useDispatch();
     useEffect(() => dispatch(getUsers()), []);
     const users = useSelector(state => state.users.users);
-    console.log("User: "+ users);
 
     return (
         users.length > 0 && 
@@ -113,6 +113,7 @@ const MyAccountProfile = () => {
                                     <div className="extra-blocks__main-block__title">
                                         Записаться на тест-драйв
                                     </div>
+                                    <Button type="primary" className="btn-main">Записаться</Button>
                                 </div>
                                 <div className="extra-blocks__main-block">
                                     <div className="extra-blocks__main-block__title">
@@ -126,7 +127,7 @@ const MyAccountProfile = () => {
                             </div>
                         </TabPane>
                         <TabPane tab="Заявки на тест-драйв" key="2">
-                            <div>ЗАЯВКИ НА ТЕСТ ДРАЙВ</div>
+                            <MyAccountProfileTestDrive/>
                         </TabPane>
                         <TabPane tab="Записи на ТО" key="3">
                             <div>ЗАПИСИ ТО</div>

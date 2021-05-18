@@ -1,11 +1,16 @@
 .test-drive-car-item {
     display: flex;
     justify-content: center;
+    margin-right: 15px;
     &__car-name {
         font-size: 18px;
     }
     &__img {
-        height: 220px;
-        width: 300px;
+        height: 250px;
+        width: 350px;
     }
+}
+
+.active-card {
+    border: 2px solid black;
 }

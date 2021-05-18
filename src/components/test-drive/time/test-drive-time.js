@@ -2,13 +2,14 @@ import React, {useState} from "react";
 import "./test-drive-time.scss";
 import {Button, Calendar} from "antd";
 
-const TestDriveTime = () => {
+const TestDriveTime = ({setSelectTime}) => {
 
     const [chooseDay, setChooseDay] = useState("29-04-2021");
     const [chooseTime, setChooseTime] = useState("9:00");
 
     const onChange = (value) => {
         setChooseDay(String(value.format("D-MM-YYYY")));
+
     }
 
     const availableTime = [
@@ -35,7 +36,11 @@ const TestDriveTime = () => {
                     <Calendar fullscreen={false} onChange={onChange}/>
                 </div>
                 <div className="test-drive-time__block__available-time">
-                    {availableTime.map(item => <Button className="btn-item" onClick={() => setChooseTime(item)}>{item}</Button>)}
+                    {availableTime.map(item => <Button className="btn-item" onClick={() => {
+                        setChooseTime(item);
+                        setSelectTime(`${chooseDay} ${chooseTime}`)
+                    }
+                    }>{item}</Button>)}
                 </div>
             </div>
         </div>

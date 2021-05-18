@@ -1,8 +1,9 @@
 .test-drive-path {
   &__choose-path{
     display: flex;
+    justify-content: space-between;
     &__item {
-      margin-right: 35px;
+
     }
   }
   
