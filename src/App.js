@@ -11,13 +11,14 @@ import TestDrive from "./components/test-drive/test-drive";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {getCars} from "./components/redux/actions/carActions";
+import Basket from "./components/basket/basket";
 
 
 function App() {
 
-    const dispatch = useDispatch();
-    useEffect(() => dispatch(getCars()), []);
-    const cars = useSelector(state => state.cars.cars);
+    // const dispatch = useDispatch();
+    // useEffect(() => dispatch(getCars()), []);
+    // const cars = useSelector(state => state.cars.cars);
 
     const [selectedMark, setSelectedMark] = useState();
 
@@ -32,6 +33,7 @@ function App() {
                         <Route exact path="/allBrands" render={() => <ChooseAuto selectedMark={selectedMark} />}/>
                         <Route exact path="/autoItem" component={AutoItem}/>
                         <Route exact path="/testDrive" component={TestDrive}/>
+                        <Route exact path="/basket" component={Basket}/>
                     </Switch>
                 </div>
                 <Footer className="Footer"/>

@@ -22,6 +22,8 @@ const TestDriveData = ({selectCar, selectPath, selectTime}) => {
         wrapperCol: { span: 8 },
     };
 
+    const [confirmTestDrive, setConfirmTestDrive] = useState(true);
+
 
 
     const submitTestDrive = () => {
@@ -38,6 +40,7 @@ const TestDriveData = ({selectCar, selectPath, selectTime}) => {
             path: selectPath
         }
         dispatch(postTestDrive(postObj));
+        setConfirmTestDrive(false);
         console.log(postObj)
     }
 
@@ -85,6 +88,9 @@ const TestDriveData = ({selectCar, selectPath, selectTime}) => {
                     </Button>
                 </Form.Item>
             </Form>
+            <div className={`confirm-test-drive ${confirmTestDrive ? 'confirm-test-drive-none' : ""} `}>
+                Вы успешно записались на тест-драйв!
+            </div>
         </div>
     )
 }

@@ -9,6 +9,7 @@ const ChooseAuto = ({selectedMark}) => {
     const dispatch = useDispatch();
     const cars = useSelector(state => state.cars.cars);
 
+
     useEffect(async () => {
         await dispatch(getCars(selectedMark.mark_id));
         setAllCars(cars);

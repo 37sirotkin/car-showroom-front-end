@@ -18,7 +18,6 @@ const MyAccountProfileTestDrive = () => {
             car: td.id_car,
             path: td.path,
         }))
-        console.log(tableInfo)
         updateUserTestDrives(tableInfo);
     }, []);
 

@@ -48,7 +48,9 @@ const Header = () => {
                         </NavLink>
                     </div>
                     <div className="btn-header">
-                        <ShoppingCartOutlined className="btn-header__icon"/>
+                        <NavLink to="/basket">
+                            <ShoppingCartOutlined className="btn-header__icon"/>
+                        </NavLink>
                     </div>
                     <div className="btn-header">
                         <MenuOutlined className="btn-header__icon"/>

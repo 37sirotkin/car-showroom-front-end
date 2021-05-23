@@ -1,0 +1,13 @@
+.basket-item{
+  display: flex;
+  &__img {
+    width: 250px;
+    height: 130px;
+  }
+  &__about {
+    &__car-name {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+}
