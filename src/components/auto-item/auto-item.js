@@ -2,7 +2,9 @@ import React from "react";
 import "./auto-item.scss";
 import {Button} from "antd";
 
-const AutoItem = () => {
+const AutoItem = ({match}) => {
+    debugger;
+    const {autoId} = match.params;
     return (
         <div className="auto-item">
             <div className="auto-item__head">

@@ -2,10 +2,11 @@ import React from "react";
 import "./choose-auto-item.scss";
 import {NavLink} from "react-router-dom";
 
-const ChooseAutoItem = (mark, model, price) => {
+const ChooseAutoItem = ({car}) => {
+    const {id_car, mark, model, price, img} = car;
     return (
-        <NavLink to="/autoItem" className="choose-auto-item" >
-            <img className="choose-auto-item__img-car" src="https://cutt.ly/5cOYMSo" alt="img-car"/>
+        <NavLink to={`/autos/${id_car}`} className="choose-auto-item" >
+            <img className="choose-auto-item__img-car" src={img} alt="img-car"/>
             <span className="choose-auto-item__car-name">
                 {mark} {model}
             </span>

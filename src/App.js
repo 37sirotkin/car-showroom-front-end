@@ -30,8 +30,8 @@ function App() {
                     <Switch>
                         <Route exact path="/" render={() => <HomePage setSelectedMark={setSelectedMark}/>}/>
                         <Route exact path="/myAccount" component={MyAccount}/>
-                        <Route exact path="/allBrands" render={() => <ChooseAuto selectedMark={selectedMark} />}/>
-                        <Route exact path="/autoItem" component={AutoItem}/>
+                        <Route exact path="/allBrands" component={ChooseAuto}/>
+                        <Route exact path="/autos/:autoId" component={AutoItem}/>
                         <Route exact path="/testDrive" component={TestDrive}/>
                         <Route exact path="/basket" component={Basket}/>
                     </Switch>
