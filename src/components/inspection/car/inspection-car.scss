@@ -1,0 +1,36 @@
+.test-drive-car {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  &__input {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    &__find-car {
+      width: 35%;
+      display: block;
+    }
+    &__icon {
+      margin-left: 10px;
+      position: relative;
+      top: 3px;
+      font-size: 20px;
+    }
+  }
+
+  &__img-car {
+    width: 50%;
+    height: 50%;
+    margin-left: 30%;
+  }
+  &__items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    &__row {
+      display: flex;
+      margin-top: 15px;
+    }
+  }
+}

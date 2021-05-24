@@ -112,6 +112,9 @@ const MyAccountProfile = () => {
                                     <div className="extra-blocks__main-block__title">
                                         Записаться на тест-драйв
                                     </div>
+                                    <div className="extra-blocks__main-block__history">
+                                        <span>Последняя запись на тест-драйв: {"21-06-05"}</span>
+                                    </div>
                                     <Button type="primary" className="btn-main">Записаться</Button>
                                 </div>
                                 <div className="extra-blocks__main-block">

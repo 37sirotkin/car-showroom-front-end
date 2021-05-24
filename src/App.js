@@ -12,6 +12,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {getCars} from "./components/redux/actions/carActions";
 import Basket from "./components/basket/basket";
+import Inspection from "./components/inspection/inspection";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
                         <Route exact path="/autos/:autoId" component={AutoItem}/>
                         <Route exact path="/testDrive" component={TestDrive}/>
                         <Route exact path="/basket" component={Basket}/>
+                        <Route exact path="/inspection" component={Inspection}/>
                     </Switch>
                 </div>
                 <Footer className="Footer"/>

@@ -14,9 +14,9 @@ const Header = () => {
                 </NavLink>
             </Menu.Item>
             <Menu.Item>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
+                <NavLink to="/inspection">
                     Запись на ТО
-                </a>
+                </NavLink>
             </Menu.Item>
         </Menu>
     )

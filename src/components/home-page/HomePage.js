@@ -9,6 +9,7 @@ import repairCarLogo from "../../img/mg_repair_car.jpg";
 import ProfitableOffers from "./profitable-offers/profitable-offers";
 import {useDispatch} from "react-redux";
 import {loginIn} from "../redux/actions/securityAction";
+import {NavLink} from "react-router-dom";
 
 const HomePage = ({setSelectedMark}) => {
 
@@ -16,78 +17,77 @@ const HomePage = ({setSelectedMark}) => {
 
     const layout = {
         labelCol: {
-          span: 8,
+            span: 8,
         },
         wrapperCol: {
-          span: 16,
+            span: 16,
         },
-      };
-      const tailLayout = {
+    };
+    const tailLayout = {
         wrapperCol: {
-          offset: 8,
-          span: 16,
+            offset: 8,
+            span: 16,
         },
-      };
+    };
 
-      const onFinish = (values) => {
+    const onFinish = (values) => {
         dispatch(loginIn(values.username, values.password));
-      };
-    
-      const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-      };
+    };
 
-      
+    const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
+    };
+
 
     return (
         <div className="home-page">
             <div className="home-page__login-in">
                 {/*<div className="home-page__login-in__title">Авторизация</div>*/}
-    {/*            <Form*/}
-    {/*  {...layout}*/}
-    {/*  name="basic"*/}
-    {/*  initialValues={{*/}
-    {/*    remember: true,*/}
-    {/*  }}*/}
-    {/*  onFinish={onFinish}*/}
-    {/*  onFinishFailed={onFinishFailed}*/}
-    {/*>*/}
-    {/*  <Form.Item*/}
-    {/*    label="Username"*/}
-    {/*    name="username"*/}
-    {/*    rules={[*/}
-    {/*      {*/}
-    {/*        required: true,*/}
-    {/*        message: 'Please input your username!',*/}
-    {/*      },*/}
-    {/*    ]}*/}
-    {/*  >*/}
-    {/*    <Input />*/}
-    {/*  </Form.Item>*/}
+                {/*            <Form*/}
+                {/*  {...layout}*/}
+                {/*  name="basic"*/}
+                {/*  initialValues={{*/}
+                {/*    remember: true,*/}
+                {/*  }}*/}
+                {/*  onFinish={onFinish}*/}
+                {/*  onFinishFailed={onFinishFailed}*/}
+                {/*>*/}
+                {/*  <Form.Item*/}
+                {/*    label="Username"*/}
+                {/*    name="username"*/}
+                {/*    rules={[*/}
+                {/*      {*/}
+                {/*        required: true,*/}
+                {/*        message: 'Please input your username!',*/}
+                {/*      },*/}
+                {/*    ]}*/}
+                {/*  >*/}
+                {/*    <Input />*/}
+                {/*  </Form.Item>*/}
 
-    {/*  <Form.Item*/}
-    {/*    label="Password"*/}
-    {/*    name="password"*/}
-    {/*    rules={[*/}
-    {/*      {*/}
-    {/*        required: true,*/}
-    {/*        message: 'Please input your password!',*/}
-    {/*      },*/}
-    {/*    ]}*/}
-    {/*  >*/}
-    {/*    <Input.Password />*/}
-    {/*  </Form.Item>*/}
+                {/*  <Form.Item*/}
+                {/*    label="Password"*/}
+                {/*    name="password"*/}
+                {/*    rules={[*/}
+                {/*      {*/}
+                {/*        required: true,*/}
+                {/*        message: 'Please input your password!',*/}
+                {/*      },*/}
+                {/*    ]}*/}
+                {/*  >*/}
+                {/*    <Input.Password />*/}
+                {/*  </Form.Item>*/}
 
-    {/*  <Form.Item {...tailLayout} name="remember" valuePropName="checked">*/}
-    {/*    <Checkbox>Remember me</Checkbox>*/}
-    {/*  </Form.Item>*/}
+                {/*  <Form.Item {...tailLayout} name="remember" valuePropName="checked">*/}
+                {/*    <Checkbox>Remember me</Checkbox>*/}
+                {/*  </Form.Item>*/}
 
-    {/*  <Form.Item {...tailLayout}>*/}
-    {/*    <Button type="primary" htmlType="submit">*/}
-    {/*      Submit*/}
-    {/*    </Button>*/}
-    {/*  </Form.Item>*/}
-    {/*</Form>*/}
+                {/*  <Form.Item {...tailLayout}>*/}
+                {/*    <Button type="primary" htmlType="submit">*/}
+                {/*      Submit*/}
+                {/*    </Button>*/}
+                {/*  </Form.Item>*/}
+                {/*</Form>*/}
             </div>
             <div className="home-main-logo">
                 <img src={mainLogo} alt="main-logo"/>
@@ -208,7 +208,11 @@ const HomePage = ({setSelectedMark}) => {
                             <li><CheckCircleOutlined className="done-icon"/><span>Никаких очередей</span></li>
                         </ul>
                     </div>
-                    <Button className="btn-main btn-sign-up" type="primary" size="large">Записаться</Button>
+
+                    <Button className="btn-main btn-sign-up" type="primary" size="large"
+                            onClick={() => <NavLink to="/testDrive"/>}>Записаться</Button>
+
+
                 </div>
                 <div className="img-test-drive">
                     <img src={repairCarLogo} alt="repair-car-logo"/>
@@ -216,6 +220,6 @@ const HomePage = ({setSelectedMark}) => {
             </div>
         </div>
     )
-    }
+}
 
 export default HomePage;
