@@ -7,31 +7,31 @@ const BasketItem = () => {
             <img className="basket-item__img" src="https://i.postimg.cc/YCH3jTqN/Nissan-X-Trail.png" alt="auto-img"/>
             <div className="basket-item__about">
                 <div className="basket-item__about__car-name">
-                    Nissan
+                    Nissan X-TRAIL
                 </div>
                 <div className="basket-item__about__row">
-                    Тип двигателя: Lorem ipsum dolor.
+                    Тип двигателя: 35 TFSI.
                 </div>
                 <div className="basket-item__about__row">
-                    Вид топлива: Lorem ipsum dolor.
+                    Вид топлива: бензин.
                 </div>
                 <div className="basket-item__about__row">
-                    Объем: Lorem ipsum dolor.
+                    Объем: 2.0 л.
                 </div>
                 <div className="basket-item__about__row">
-                    Мощность: Lorem ipsum dolor.
+                    Мощность: 150 л.с.
                 </div>
                 <div className="basket-item__about__row">
-                    КПП: Lorem ipsum dolor.
+                    КПП: S tronic.
                 </div>
                 <div className="basket-item__about__row">
-                    Цвет: Lorem ipsum dolor.
+                    Цвет: белый.
                 </div>
                 <div className="basket-item__about__row">
-                    Салон: Lorem ipsum dolor.
+                    Салон: Черный.
                 </div>
                 <div className="basket-item__about__row">
-                    Сумма: 6000$.
+                    Сумма: 35476 бел.руб.
                 </div>
             </div>
 

@@ -13,14 +13,14 @@ const Basket = () => {
             <div className="basket__column">
                 <div >Автомобиль будет забронирован на имя:</div>
                 <div className="basket__column__name">
-
+                    Иванов Иван Юревьвич
                 </div>
                 <div className="basket__column__info">
                     <br/>
-                    Email: <Input></Input>
+                    Email: <Input value="ivan.invanov@mail.ru"/>
                 </div>
                 <div className="basket__column__info">
-                    Телефон: <Input></Input>
+                    Телефон: <Input value="+375447654318"/>
                 </div>
                 <div className="basket__column__static-info">
                     <br/>

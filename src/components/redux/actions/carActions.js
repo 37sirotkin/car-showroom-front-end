@@ -1,7 +1,6 @@
 import axios from "axios";
 import {GET_CARS} from "../types";
 import {URL} from "./url";
-axios.defaults.withCredentials = true
 
 export const getCars = (idCar) => {
     return async dispatch => {

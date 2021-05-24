@@ -88,6 +88,9 @@
               height: 130px;
               border: 1px solid #8c8c8c;
               border-radius: 5px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
               &__title {
                 font-size: 16px;
                 text-align: center;

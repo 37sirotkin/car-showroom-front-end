@@ -3,7 +3,6 @@ import "./my-account-profile.scss";
 import {Button, DatePicker, Input, Table, Tabs} from "antd";
 import moment from "moment";
 import {useDispatch, useSelector} from "react-redux";
-import {getMarks} from "../../redux/actions/markActions";
 import {getUsers} from "../../redux/actions/userAction";
 import MyAccountProfileTestDrive from "./my-account-profile-test-drive";
 
@@ -70,20 +69,20 @@ const MyAccountProfile = () => {
                     <div className="title">Персональные данные</div>
                     <div className="full-name-row">
                         <div className="text-data">ФИО:</div>
-                        <Input className="full-name-input" value={users[2].surname + ' ' + users[2].first_name}/>
+                        <Input className="full-name-input" value={users[3].surname + ' ' + users[3].first_name}/>
                     </div>
                     <div className="email-row">
                         <div className="text-data">Email:</div>
-                        <Input className="email-input" value={users[2].email}/>
+                        <Input className="email-input" value={users[3].email}/>
                     </div>
                     <div className="phone-row">
                         <div className="text-data">Телефон:</div>
-                        <Input className="phone-input" value={users[2].phone}/>
+                        <Input className="phone-input" value={users[3].phone}/>
                     </div>
                     <div className="db-row">
                         <div className="text-data">Дата Рождения:</div>
                         <Input.Group compact>
-                            <DatePicker onChange={changeData} placeholder={users[2].birthday} className="calendar"  />
+                            <DatePicker onChange={changeData} placeholder={users[3].birthday} className="calendar"  />
                         </Input.Group>
                     </div>
                     <div className="pass-row">
@@ -120,7 +119,7 @@ const MyAccountProfile = () => {
                                         Записаться на ТО
                                     </div>
                                     <div className="extra-blocks__main-block__history">
-                                        <span>Последнее прохождение ТО: {"Data from DB"}</span>
+                                        <span>Последнее прохождение ТО: {"Не проходил"}</span>
                                     </div>
                                     <Button type="primary" className="btn-main">Записаться</Button>
                                 </div>
