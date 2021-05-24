@@ -197,7 +197,7 @@ const HomePage = ({setSelectedMark}) => {
             <div className="test-drive-registration">
                 <div className="active-block">
                     <div className="active-block__title">
-                        Быстрая и удобная запись на тест-драйв
+                        Быстрая и удобная запись на ТО
                     </div>
                     <div className="active-block__pluses">
                         <ul className="pluses-items">

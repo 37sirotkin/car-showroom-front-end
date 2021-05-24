@@ -1,8 +1,6 @@
 import React, {useEffect} from "react";
 import "./all-brands-item.scss";
 import {NavLink} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {getMarks} from "../../redux/actions/markActions";
 
 const AllBrandsItem = ({ mark, setSelectedMark }) => {
 

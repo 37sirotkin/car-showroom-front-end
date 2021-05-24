@@ -15,7 +15,7 @@ const Header = () => {
             </Menu.Item>
             <Menu.Item>
                 <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
-                    Запись на сервис
+                    Запись на ТО
                 </a>
             </Menu.Item>
         </Menu>

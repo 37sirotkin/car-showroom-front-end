@@ -31,6 +31,10 @@
   }
   .all-mark-cars {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    &__row {
+      display: flex;
+      justify-content: center;
+    }
   }
 }
