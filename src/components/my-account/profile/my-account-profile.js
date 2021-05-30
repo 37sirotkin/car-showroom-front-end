@@ -5,6 +5,7 @@ import moment from "moment";
 import {useDispatch, useSelector} from "react-redux";
 import {getUsers} from "../../redux/actions/userAction";
 import MyAccountProfileTestDrive from "./my-account-profile-test-drive";
+import { SecurityScanFilled } from "@ant-design/icons";
 
 const dataSource = [
     {
@@ -61,28 +62,31 @@ const MyAccountProfile = () => {
     useEffect(() => dispatch(getUsers()), []);
     const users = useSelector(state => state.users.users);
 
+    const security = useSelector(state => state.security)
+
+    const {user} = security;
     return (
-        users.length > 0 && 
+        user && 
         <div className="my-account-profile">
             <div className="my-account-profile__account-settings">
                 <div className="my-account-profile__account-settings__personal-data">
                     <div className="title">Персональные данные</div>
                     <div className="full-name-row">
                         <div className="text-data">ФИО:</div>
-                        <Input className="full-name-input" value={users[3].surname + ' ' + users[3].first_name}/>
+                        <Input className="full-name-input" value={user.firstName}/>
                     </div>
                     <div className="email-row">
                         <div className="text-data">Email:</div>
-                        <Input className="email-input" value={users[3].email}/>
+                        <Input className="email-input" value={user.email}/>
                     </div>
                     <div className="phone-row">
                         <div className="text-data">Телефон:</div>
-                        <Input className="phone-input" value={users[3].phone}/>
+                        <Input className="phone-input" value={user.phone}/>
                     </div>
                     <div className="db-row">
                         <div className="text-data">Дата Рождения:</div>
                         <Input.Group compact>
-                            <DatePicker onChange={changeData} placeholder={users[3].birthday} className="calendar"  />
+                            <DatePicker onChange={changeData} placeholder={user.birthday} className="calendar"  />
                         </Input.Group>
                     </div>
                     <div className="pass-row">

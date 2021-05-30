@@ -8,7 +8,7 @@ const TestDriveTime = ({setSelectTime}) => {
     const [chooseTime, setChooseTime] = useState("9:00");
 
     const onChange = (value) => {
-        setChooseDay(String(value.format("D-MM-YYYY")));
+        setChooseDay(String(value.format("YYYY-MM-DD")));
 
     }
 

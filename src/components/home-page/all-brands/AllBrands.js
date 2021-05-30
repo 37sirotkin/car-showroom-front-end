@@ -7,36 +7,32 @@ import AllBrandsItem from "./AllBrandsItem";
 const AllBrands = ({setSelectedMark}) => {
     const dispatch = useDispatch();
     useEffect(() => dispatch(getMarks()), []);
-    const marks = useSelector(state => state.marks.marks)
+    const marks = useSelector(state => state.marks.marks);
+    const groupedMarks = groupMarks(marks.filter(m => m.name.toLowerCase().indexOf('') !== -1), 5);
     return (
         <div className="all-brands">
-            <div className="all-brands__column">
-                {marks.map(mark => mark.mark_id < 11 ? <AllBrandsItem setSelectedMark={setSelectedMark} mark={mark}/> : undefined)}
-            </div>
-            <div className="all-brands__column">
-                {marks.map(mark => {
-                    if (mark.mark_id > 11 && mark.mark_id < 21) {
-                        return <AllBrandsItem setSelectedMark={setSelectedMark} mark={mark}/>
-                    }
-                })}
-            </div>
-            <div className="all-brands__column">
-                {marks.map(mark => {
-                    if (mark.mark_id > 21 && mark.mark_id < 31) {
-                        return <AllBrandsItem setSelectedMark={setSelectedMark} mark={mark}/>
-                    }
-                })}
-            </div>
-            <div className="all-brands__column">
-                {marks.map(mark => {
-                    if (mark.mark_id > 31) {
-                        return <AllBrandsItem setSelectedMark={setSelectedMark} mark={mark}/>
-                    }
-                })}
-            </div>
-
+            {groupedMarks.map(group => (
+                <div className="all-brands__column">
+                    {group.map(mark => <AllBrandsItem setSelectedMark={setSelectedMark} mark={mark}/>)}
+                </div> 
+            ))}            
         </div>
     )
 }
+
+const groupMarks = (marks, columnsCount) => {
+    const groupSize =  Math.ceil(marks.length / columnsCount);
+   
+    let group = [];
+    const groups = [group];
+    for (const mark of marks) {
+        group.push(mark);
+        if (group.length === groupSize) {
+            group = [];
+            groups.push(group);
+        }
+    }
+    return groups;
+};
 
 export default AllBrands;

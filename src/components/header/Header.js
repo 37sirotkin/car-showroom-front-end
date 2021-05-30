@@ -70,7 +70,7 @@ const Header = () => {
                 <div className="dropdown-menu">
                     <Dropdown className="dropdown-item" overlay={menu}>
                         <Button>
-                            МЕНЮ <DownOutlined/>
+                            УСЛУГИ <DownOutlined/>
                         </Button>
                     </Dropdown>
                     <Dropdown className="dropdown-item" overlay={catalog}>
