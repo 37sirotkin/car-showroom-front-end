@@ -13,6 +13,9 @@ import {useEffect, useState} from "react";
 import {getCars} from "./components/redux/actions/carActions";
 import Basket from "./components/basket/basket";
 import Inspection from "./components/inspection/inspection";
+import UsersAndOrders from "./components/admin/users-and-orders/users-and-orders";
+import AddCar from "./components/admin/add-car/add-car";
+import MainChart from "./components/charts/main-chart/main-chart";
 
 
 function App() {
@@ -36,6 +39,9 @@ function App() {
                         <Route exact path="/testDrive" component={TestDrive}/>
                         <Route exact path="/basket" component={Basket}/>
                         <Route exact path="/inspection" component={Inspection}/>
+                        <Route exact path="/users-and-orders" component={UsersAndOrders}/>
+                        <Route exact path="/add-car" component={AddCar}/>
+                        <Route exact path="/main-chart" component={MainChart}/>
                     </Switch>
                 </div>
                 <Footer className="Footer"/>

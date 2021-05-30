@@ -78,7 +78,9 @@ const Header = () => {
                             КАТАЛОГ <DownOutlined/>
                         </Button>
                     </Dropdown>
-                    <Button className="dropdown-item">АДРЕСА И КОНТАКТЫ</Button>
+                    <Button onClick={() => {
+
+                    }} className="dropdown-item">АДРЕСА И КОНТАКТЫ</Button>
                 </div>
             </div>
         </header>

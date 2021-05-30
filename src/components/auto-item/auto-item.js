@@ -1,15 +1,24 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./auto-item.scss";
 import {Button} from "antd";
+import {useDispatch, useSelector} from "react-redux";
+import {getMarks} from "../redux/actions/markActions";
+import {getCars} from "../redux/actions/carActions";
 
 const AutoItem = ({match}) => {
-    debugger;
     const {autoId} = match.params;
+    const cars = useSelector(state => state.cars.cars);
+    const marks = useSelector(state => state.marks.marks);
+    const selectAuto = cars.length && cars.find(car => car.id_car == autoId);
+    const selectMark = marks.length && selectAuto && marks.find(mark => mark.mark_id == selectAuto.markMarkId);
+    const dispatch = useDispatch();
+    useEffect(() => dispatch(getMarks()), []);
+    useEffect(() => dispatch(getCars()), []);
     return (
         <div className="auto-item">
             <div className="auto-item__head">
-                <h2>AUDI A6</h2>
-                <img className="auto-item__head__img-auto" src="https://cutt.ly/5cOYMSo" alt="auto-img"/>
+                <h2>{selectMark.name} {selectAuto.model}</h2>
+                <img className="auto-item__head__img-auto" src={selectAuto.img} alt="auto-img"/>
             </div>
             <div className="auto-item__markup">
                 <div className="auto-item__markup__column">
