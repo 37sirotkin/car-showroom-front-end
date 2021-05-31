@@ -4,7 +4,7 @@ import {Button, Calendar} from "antd";
 
 const TestDriveTime = ({setSelectTime}) => {
 
-    const [chooseDay, setChooseDay] = useState("29-04-2021");
+    const [chooseDay, setChooseDay] = useState("2021-05-31");
     const [chooseTime, setChooseTime] = useState("9:00");
 
     const onChange = (value) => {

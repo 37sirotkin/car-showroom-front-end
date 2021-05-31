@@ -4,11 +4,16 @@ import {useDispatch, useSelector} from "react-redux";
 import {getTestDrive} from "../../redux/actions/testDriveAction";
 import {getCars} from "../../redux/actions/carActions";
 
+
+
 const MyAccountProfileTestDrive = () => {
+
+    const security = useSelector(state => state.security);
+    const {user} = security;
     const dispatch = useDispatch();
     const allTestDrives = useSelector(state => state.testDrive.testDrive);
     const allCars = useSelector(state => state.cars.cars);
-    const currentUserTD = allTestDrives.filter(td => td.id_user === 2);
+    const currentUserTD = allTestDrives.filter(td => td.id_user == user.id_user);
     const tableInfo = []
     
     allCars.length > 0 && currentUserTD.forEach(td => tableInfo.push({

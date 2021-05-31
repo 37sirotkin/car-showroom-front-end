@@ -10,14 +10,14 @@ const Basket = () => {
     const {user} = security;
     const dispatch = useDispatch();
     const orders = useSelector(state => state.order.order);
-    // useEffect(() => dispatch(getOrder()),[]);
-    // const currentOrders = (orders.length && orders.filter(o => o.id_user == user.id_user)) || [];
+    useEffect(() => dispatch(getOrder()),[]);
+    const currentOrders = (orders.length && orders.filter(o => o.id_user == user.id_user)) || [];
 
     return (
         <div className="basket">
             <div className="basket__column">
                 <span className="basket__column__title">Бронирование</span>
-                <BasketItem/>
+                {<BasketItem price={currentOrders[currentOrders.length-1].price} idCar={currentOrders[currentOrders.length-1].id_car}/>}
             </div>
             <div className="basket__column">
                 <div >Автомобиль будет забронирован на имя:</div>

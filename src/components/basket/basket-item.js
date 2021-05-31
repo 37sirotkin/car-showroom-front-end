@@ -1,13 +1,24 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./basket-item.scss";
+import {useDispatch, useSelector} from "react-redux";
+import {getCars} from "../redux/actions/carActions";
 
-const BasketItem = () => {
+const BasketItem = ({price, idCar}) => {
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getCars());
+
+    },[])
+    const cars = useSelector(state => state.cars.cars)
+
+
     return (
         <div className="basket-item">
-            <img className="basket-item__img" src="https://i.postimg.cc/YCH3jTqN/Nissan-X-Trail.png" alt="auto-img"/>
+            <img className="basket-item__img" src={cars.length && cars.find(car => car.id_car == idCar).img} alt="auto-img"/>
             <div className="basket-item__about">
                 <div className="basket-item__about__car-name">
-                    NISSAN
+                    {cars.length && cars.find(car => car.id_car == idCar).model}
                 </div>
                 <div className="basket-item__about__row">
                     Тип двигателя: 35 TFSI.
