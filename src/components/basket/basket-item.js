@@ -1,13 +1,13 @@
 import React from "react";
 import "./basket-item.scss";
 
-const BasketItem = (idCar, price) => {
+const BasketItem = () => {
     return (
         <div className="basket-item">
             <img className="basket-item__img" src="https://i.postimg.cc/YCH3jTqN/Nissan-X-Trail.png" alt="auto-img"/>
             <div className="basket-item__about">
                 <div className="basket-item__about__car-name">
-                    idCar
+                    NISSAN
                 </div>
                 <div className="basket-item__about__row">
                     Тип двигателя: 35 TFSI.
@@ -31,7 +31,7 @@ const BasketItem = (idCar, price) => {
                     Салон: Черный.
                 </div>
                 <div className="basket-item__about__row">
-                    Сумма: {price} бел.руб.
+                    Сумма: 340555 бел.руб.
                 </div>
             </div>
 

@@ -7,7 +7,7 @@ import {getOrder} from "../redux/actions/orderAction";
 
 const Basket = () => {
     const security = useSelector(state => state.security);
-    const {logged, signupChecked, user} = security;
+    const {user} = security;
     const dispatch = useDispatch();
     const orders = useSelector(state => state.order.order);
     // useEffect(() => dispatch(getOrder()),[]);
