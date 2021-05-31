@@ -8,3 +8,5 @@ export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
 export const SIGNUP_ERROR = "SIGNUP_ERROR";
 export const GET_INSPECTION = "GET_INSPECTION";
 export const POST_INSPECTION = "POST_INSPECTION";
+export const GET_ORDER = "GET_ORDER";
+export const POST_ORDER = "POST_ORDER";

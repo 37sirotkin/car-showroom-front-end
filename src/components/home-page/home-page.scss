@@ -159,10 +159,17 @@
         margin-top: 25px;
 
         &__item {
-          width: 220px;
-          height: 350px;
-          background: #07b395;
-          border: 1px solid #027563;
+          width: 280px;
+          height: 220px;
+
+          &__img {
+            width: 276px;
+            height: 150px;
+          }
+          &__text {
+            font-size: 20px;
+            font-weight: bold;
+          }
         }
       }
 

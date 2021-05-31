@@ -4,22 +4,12 @@ import {DownOutlined, MenuOutlined, ShoppingCartOutlined, UserOutlined} from "@a
 import {Button, Dropdown, Menu} from "antd";
 import {NavLink} from "react-router-dom";
 import mainLogo from "../../img/main_logo.jpg"
+import {useSelector} from "react-redux";
 
 const Header = () => {
-    const menu = (
-        <Menu>
-            <Menu.Item>
-                <NavLink to="/testDrive">
-                    Запись на тест-драйв
-                </NavLink>
-            </Menu.Item>
-            <Menu.Item>
-                <NavLink to="/inspection">
-                    Запись на ТО
-                </NavLink>
-            </Menu.Item>
-        </Menu>
-    )
+
+    const security = useSelector(state => state.security);
+    const {user} = security;
 
     const catalog = (
         <Menu>
@@ -35,6 +25,9 @@ const Header = () => {
             </Menu.Item>
         </Menu>
     )
+
+
+
     return (
         <header className="header">
             <div className="header__upper-row">
@@ -68,7 +61,50 @@ const Header = () => {
                     </NavLink>
                 </div>
                 <div className="dropdown-menu">
-                    <Dropdown className="dropdown-item" overlay={menu}>
+                    <Dropdown className="dropdown-item" overlay={<Menu>
+                        <Menu.Item>
+                            <NavLink to="/testDrive">
+                                Запись на тест-драйв
+                            </NavLink>
+                        </Menu.Item>
+                        <Menu.Item>
+                            <NavLink to="/inspection">
+                                Запись на ТО
+                            </NavLink>
+                        </Menu.Item>
+                        {
+                            user.type == 2 ?
+                                (
+                            <Menu.Item>
+                            <NavLink to="/customize-chart">
+                                Отчеты
+                            </NavLink>
+                            </Menu.Item>) : null
+
+                        }
+                        {
+                            user.type == 2 ?
+                                (
+                                    <Menu.Item>
+                                        <NavLink to="/main-chart">
+                                            Статистика
+                                        </NavLink>
+                                    </Menu.Item>) : null
+
+                        }
+                        {
+                            user.type == 3 ?
+                                (
+                                    <Menu.Item>
+                                        <NavLink to="/users-and-orders">
+                                            Таблицы
+                                        </NavLink>
+                                    </Menu.Item>) : null
+
+                        }
+
+
+                    </Menu>}>
                         <Button>
                             УСЛУГИ <DownOutlined/>
                         </Button>

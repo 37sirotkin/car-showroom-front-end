@@ -4,8 +4,13 @@ import {Button} from "antd";
 import {useDispatch, useSelector} from "react-redux";
 import {getMarks} from "../redux/actions/markActions";
 import {getCars} from "../redux/actions/carActions";
+import {NavLink} from "react-router-dom";
+import {postOrder} from "../redux/actions/orderAction";
+import Basket from "../basket/basket";
 
 const AutoItem = ({match}) => {
+    const security = useSelector(state => state.security);
+    const {logged, signupChecked, user} = security;
     const {autoId} = match.params;
     const cars = useSelector(state => state.cars.cars);
     const marks = useSelector(state => state.marks.marks);
@@ -14,6 +19,17 @@ const AutoItem = ({match}) => {
     const dispatch = useDispatch();
     useEffect(() => dispatch(getMarks()), []);
     useEffect(() => dispatch(getCars()), []);
+
+    const newOrder = () => {
+        const obj = {
+            date_of_order: "2021-05-31",
+            id_user: user.id_user,
+            id_car: parseInt(autoId, 10),
+            price: 240000
+        }
+        dispatch(postOrder(obj))
+    }
+
     return (
         <div className="auto-item">
             <div className="auto-item__head">
@@ -42,7 +58,15 @@ const AutoItem = ({match}) => {
                     <span className="engine-description">
                         Lorem ipsum dolor sit amet.
                     </span>
-                    <Button className="btn-main btn-sign-up">Записаться на тест-драйв</Button>
+
+                    <NavLink to="/testDrive">
+                        <Button  className="btn-main btn-sign-up">Записаться на тест-драйв</Button>
+                    </NavLink>
+
+                    <NavLink to="/Basket">
+                        <Button onClick={newOrder}  className="btn-main btn-sign-up">Забронировать</Button>
+                    </NavLink>
+
                 </div>
                 <div className="auto-item__markup__column">
                     <div className="auto-item__markup__column__row">

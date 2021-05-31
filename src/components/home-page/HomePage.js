@@ -79,44 +79,45 @@ const HomePage = ({setSelectedMark}) => {
                     <div className="new-staff__title__big">
                         Новинки
                     </div>
-                    <div className="new-staff__title__small">
-                        Запчасти и аксессуары
-                    </div>
                 </div>
                 <div className="new-staff__block">
                     <div className="new-staff__block__row">
                         <div className="new-staff__block__row__item">
-
+                            <img className="new-staff__block__row__item__img" src="https://i.postimg.cc/5tkNkdX8/Audi-A7-Sportback.jpg" alt="img-car"/>
+                            <div className="new-staff__block__row__item__text">AUDI A7</div>
                         </div>
                         <div className="new-staff__block__row__item">
-
+                            <img className="new-staff__block__row__item__img" src="https://i.postimg.cc/85js1k2y/Aston-Martin-DBX.jpg" alt="img-car"/>
+                            <div className="new-staff__block__row__item__text">Aston Martin DBX</div>
                         </div>
                         <div className="new-staff__block__row__item">
-
+                            <img className="new-staff__block__row__item__img" src="https://i.postimg.cc/wBzhTN2w/KIA-Sorento.png" alt="img-car"/>
+                            <div className="new-staff__block__row__item__text">KIA Sorento</div>
                         </div>
                         <div className="new-staff__block__row__item">
-
+                            <img className="new-staff__block__row__item__img" src="https://i.postimg.cc/xTbHv5Fs/Mercedes-Benz-CLS-53-AMG.jpg" alt="img-car"/>
+                            <div className="new-staff__block__row__item__text">Mercedes-Benz CLS 53</div>
                         </div>
-                        <div className="new-staff__block__row__item">
 
-                        </div>
                     </div>
                     <div className="new-staff__block__row">
                         <div className="new-staff__block__row__item">
-
+                            <img className="new-staff__block__row__item__img" src="https://i.postimg.cc/659JRb3K/Chevrolet-Camaro-BLACK.jpg" alt="img-car"/>
+                            <div className="new-staff__block__row__item__text">Chevrolet Camaro</div>
                         </div>
                         <div className="new-staff__block__row__item">
-
+                            <img className="new-staff__block__row__item__img" src="https://i.postimg.cc/Zn5HYNTG/Jeep-Cherokee.png" alt="img-car"/>
+                            <div className="new-staff__block__row__item__text">Jeep Cherokee</div>
                         </div>
                         <div className="new-staff__block__row__item">
-
+                            <img className="new-staff__block__row__item__img" src="https://i.postimg.cc/Kvcw4Kqv/Ford-Evos.png" alt="img-car"/>
+                            <div className="new-staff__block__row__item__text">Ford Evos</div>
                         </div>
                         <div className="new-staff__block__row__item">
-
+                            <img className="new-staff__block__row__item__img" src="https://i.postimg.cc/XJCGf7sr/Tesla-model-S-Plaid.jpg" alt="img-car"/>
+                            <div className="new-staff__block__row__item__text">Tesla model S Plaid</div>
                         </div>
-                        <div className="new-staff__block__row__item">
 
-                        </div>
                     </div>
 
 

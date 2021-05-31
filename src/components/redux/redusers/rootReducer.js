@@ -5,6 +5,7 @@ import {userReducer} from "./userReducer";
 import {testDriveReducer} from "./testDriveReducer";
 import { securityReducer } from "./securityReducer";
 import {inspectionReducer} from "./inspectionReducer";
+import {orderReducer} from "./orderReducer";
 
 export const rootReducer = combineReducers({
     cars: carReducer,
@@ -12,5 +13,6 @@ export const rootReducer = combineReducers({
     users: userReducer,
     testDrive: testDriveReducer,
     security: securityReducer,
-    inspection: inspectionReducer
+    inspection: inspectionReducer,
+    order: orderReducer,
 })
