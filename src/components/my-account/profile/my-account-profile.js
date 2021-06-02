@@ -5,41 +5,12 @@ import moment from "moment";
 import {useDispatch, useSelector} from "react-redux";
 import {getUsers} from "../../redux/actions/userAction";
 import MyAccountProfileTestDrive from "./my-account-profile-test-drive";
-import { SecurityScanFilled } from "@ant-design/icons";
+import {SecurityScanFilled} from "@ant-design/icons";
 import {logOut} from "../../redux/actions/securityAction";
+import {getOrder} from "../../redux/actions/orderAction";
+import {getCars} from "../../redux/actions/carActions";
+import {getMarks} from "../../redux/actions/markActions";
 
-const dataSource = [
-    {
-        key: '1',
-        date: '22-01-2021',
-        coast: '4300p',
-        status: 'Принят',
-    },
-    {
-        key: '2',
-        name: 'John',
-        age: 42,
-        address: '10 Downing Street',
-    },
-];
-
-const columns = [
-    {
-        title: 'Дата',
-        dataIndex: 'date',
-        key: 'date',
-    },
-    {
-        title: 'Стоимость',
-        dataIndex: 'coast',
-        key: 'coast',
-    },
-    {
-        title: 'Статус',
-        dataIndex: 'status',
-        key: 'status',
-    },
-];
 
 const tabs = [{
     id: 'order',
@@ -58,20 +29,65 @@ const changeData = (value) => {
     console.log(moment(value).format("DD-MM-YYYY"));
 }
 
+
 const MyAccountProfile = () => {
+    const security = useSelector(state => state.security);
+    const orders = useSelector(state => state.order.order);
+    const cars = useSelector(state => state.cars.cars);
+    const marks = useSelector(state => state.marks.marks);
+
     const dispatch = useDispatch();
-    useEffect(() => dispatch(getUsers()), []);
-    const users = useSelector(state => state.users.users);
-
-    const security = useSelector(state => state.security)
-
+    useEffect(() => {
+        dispatch(getOrder());
+        dispatch(getCars());
+        dispatch(getMarks());
+    }, []);
     const {user} = security;
+
+    const carName = (order) => {
+        const currentCar = cars.length && cars.find(c => c.id_car == order.id_car);
+        const currentMark = marks.length && marks.find(m => m.mark_id == currentCar.markMarkId);
+        return `${currentMark.name} ${currentCar.model}`
+
+    }
+
+    const dataSource = [];
+
+    orders.length && orders.forEach(o => {
+        if (o.id_user == user.id_user) {
+            dataSource.push({
+                key: o.length,
+                date: o.date_of_order,
+                auto: carName(o),
+                price: o.price
+            })
+        }
+    })
+
+    const columns = [
+        {
+            title: 'Дата',
+            dataIndex: 'date',
+            key: 'date',
+        },
+        {
+            title: "Автомобиль",
+            dataIndex: 'auto',
+            key: 'auto',
+        },
+        {
+            title: 'Цена',
+            dataIndex: 'price',
+            key: 'price',
+        },
+    ];
+
     const onClickLogOut = () => {
         dispatch(logOut());
         window.location.reload()
     }
     return (
-        user && 
+        user &&
         <div className="my-account-profile">
             <div className="my-account-profile__account-settings">
                 <div className="my-account-profile__account-settings__personal-data">
@@ -91,7 +107,7 @@ const MyAccountProfile = () => {
                     <div className="db-row">
                         <div className="text-data">Дата Рождения:</div>
                         <Input.Group compact>
-                            <DatePicker onChange={changeData} placeholder={user.birthday} className="calendar"  />
+                            <DatePicker onChange={changeData} placeholder={user.birthday} className="calendar"/>
                         </Input.Group>
                     </div>
                     <div className="pass-row">
