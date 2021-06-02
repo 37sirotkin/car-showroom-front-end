@@ -1,5 +1,5 @@
 import axios from "axios";
-import {LOGIN_IN, SIGNUP_SUCCESS, SIGNUP_ERROR} from "../types";
+import {LOGIN_IN, SIGNUP_SUCCESS, SIGNUP_ERROR, LOG_OUT} from "../types";
 import {URL} from "./url"
 
 axios.interceptors.request.use(config => {
@@ -34,4 +34,11 @@ export const signUp = () => {
                 dispatch({type: SIGNUP_ERROR});
             });
     }
-} 
+}
+
+export const logOut = () => {
+    return async dispatch => {
+        localStorage.removeItem('token');
+        dispatch({type: LOG_OUT});
+    }
+}

@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getUsers} from "../../redux/actions/userAction";
 import MyAccountProfileTestDrive from "./my-account-profile-test-drive";
 import { SecurityScanFilled } from "@ant-design/icons";
+import {logOut} from "../../redux/actions/securityAction";
 
 const dataSource = [
     {
@@ -65,6 +66,10 @@ const MyAccountProfile = () => {
     const security = useSelector(state => state.security)
 
     const {user} = security;
+    const onClickLogOut = () => {
+        dispatch(logOut());
+        window.location.reload()
+    }
     return (
         user && 
         <div className="my-account-profile">
@@ -94,6 +99,7 @@ const MyAccountProfile = () => {
                         <div className="change-pass">Изменить</div>
                     </div>
                     <Button className="btn-save">Сохранить</Button>
+                    <Button onClick={() => onClickLogOut()} className="btn-save">Выйти из аккаунта</Button>
                 </div>
                 <div className="my-account-profile__account-settings__delete-account">
                     <div className="title-delete">Удаление аккаунта</div>

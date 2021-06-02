@@ -1,4 +1,4 @@
-import {LOGIN_IN, SIGNUP_ERROR, SIGNUP_SUCCESS} from "../types";
+import {LOG_OUT, LOGIN_IN, SIGNUP_ERROR, SIGNUP_SUCCESS} from "../types";
 
 const initialState = {
     security: [
@@ -25,6 +25,11 @@ export const securityReducer = (state = initialState, action) => {
         case LOGIN_IN:
         
             return {...state, users: action.payload}
+        case LOG_OUT:
+            return {
+            ...state,
+            signupChecked: false
+        };
         default:
             return state;
     }
