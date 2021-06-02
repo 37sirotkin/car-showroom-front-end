@@ -93,6 +93,16 @@ const Header = () => {
 
                         }
                         {
+                            user.type == 2 ?
+                                (
+                                    <Menu.Item>
+                                        <NavLink to="/add-car">
+                                            Добавить автомобиль
+                                        </NavLink>
+                                    </Menu.Item>) : null
+
+                        }
+                        {
                             user.type == 3 ?
                                 (
                                     <Menu.Item>

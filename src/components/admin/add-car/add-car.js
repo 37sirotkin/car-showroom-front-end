@@ -1,8 +1,43 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./add-car.scss";
 import {AutoComplete, Button, Input} from "antd";
+import {useDispatch, useSelector} from "react-redux";
+import {getMarks} from "../../redux/actions/markActions";
+import {postCars} from "../../redux/actions/carActions";
 
 const AddCar = () => {
+    const [selectMark, setSelectMark] = useState();
+    const [carPrice, setCarPrice] = useState();
+    const [carYear, setCarYear] = useState();
+    const [carModel, setCarModel] = useState();
+    const [carImg, setCarImg] = useState();
+    const dispatch = useDispatch();
+    const marks = useSelector(state => state.marks.marks);
+    useEffect(() => dispatch(getMarks()),[]);
+    const options = []
+    marks.forEach(mark => {
+        options.push({value: mark.name})
+    });
+    const markOnChange = (value) => {
+        const findMark = marks.find(mark => mark.name === value).mark_id;
+        setSelectMark(findMark);
+    }
+
+    const carOnSend = () => {
+        const obj = {
+            model: carModel,
+            color: "white",
+            price: carPrice,
+            year_of_issue: carYear,
+            id_mark: selectMark,
+            id_supplier: null,
+            img: carImg
+        }
+        dispatch(postCars(obj));
+        alert("Вы усешно добавили машину!")
+    }
+
+
     return (
         <div className="add-car">
             <div className="add-car__column">
@@ -15,6 +50,8 @@ const AddCar = () => {
                             width: 170,
                         }}
                         placeholder="Volvo"
+                        options={options}
+                        onSelect={markOnChange}
                     />
                 </div>
                 <div className="add-car__column__item">
@@ -51,28 +88,31 @@ const AddCar = () => {
                             width: 170,
                         }}
                         placeholder="XC60"
+                        onChange={value => setCarModel(value)}
                     />
                 </div>
                 <div className="add-car__column__item">
                     <div className="add-car__column__item__name">
-                        Класс автомобиля
+                        Год выпуска
                     </div>
                     <AutoComplete
                         style={{
                             width: 170,
                         }}
-                        placeholder="Бизнес"
+                        placeholder="2021"
+                        onChange={value => setCarYear(value)}
                     />
                 </div>
                 <div className="add-car__column__item">
                     <div className="add-car__column__item__name">
-                        Тип привода
+                        Цена
                     </div>
                     <AutoComplete
                         style={{
                             width: 170,
                         }}
-                        placeholder="Полный"
+                        placeholder="50000"
+                        onChange={value => setCarPrice(value)}
                     />
                 </div>
             </div>
@@ -180,10 +220,11 @@ const AddCar = () => {
                     <div className="add-car__column__item__name">
                         Ссылка на изображение
                     </div>
-                    <Input
+                    <AutoComplete
                         style={{
                             width: 170,
                         }}
+                        onChange={value => setCarImg(value)}
                     />
                 </div>
             </div>
@@ -219,7 +260,7 @@ const AddCar = () => {
                     />
 
                 </div>
-                <Button className="btn-main btn-save">Сохранить</Button>
+                <Button onClick={carOnSend} className="btn-main btn-save">Сохранить</Button>
             </div>
 
         </div>

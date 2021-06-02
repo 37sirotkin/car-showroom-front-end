@@ -14,11 +14,11 @@ const MyAccountProfileTestDrive = () => {
     const allTestDrives = useSelector(state => state.testDrive.testDrive);
     const allCars = useSelector(state => state.cars.cars);
     const currentUserTD = allTestDrives.filter(td => td.id_user == user.id_user);
-    const tableInfo = []
+    const tableInfo = [];
     
     allCars.length > 0 && currentUserTD.forEach(td => tableInfo.push({
         key: td.length-1,
-        date: td.date_of_td.slice(0,10),
+        date: td.date_of_td.slice(0,10) ,
         status: (td.status) ? "Подтвержден" : "Не подтвержден" ,
         car: allCars.find(car => td.id_car === car.id_car).model,
         path: td.path,

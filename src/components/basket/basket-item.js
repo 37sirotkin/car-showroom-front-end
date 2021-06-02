@@ -11,14 +11,15 @@ const BasketItem = ({price, idCar}) => {
 
     },[])
     const cars = useSelector(state => state.cars.cars)
+    const imgCar = cars.length && idCar.length && cars.find(car => car.id_car == idCar).img;
 
 
     return (
         <div className="basket-item">
-            <img className="basket-item__img" src={cars.length && cars.find(car => car.id_car == idCar).img} alt="auto-img"/>
+            <img className="basket-item__img" src={imgCar} alt="auto-img"/>
             <div className="basket-item__about">
                 <div className="basket-item__about__car-name">
-                    {cars.length && cars.find(car => car.id_car == idCar).model}
+                    {cars.length &&  idCar.length && cars.find(car => car.id_car == idCar).model}
                 </div>
                 <div className="basket-item__about__row">
                     Тип двигателя: 35 TFSI.
@@ -42,7 +43,7 @@ const BasketItem = ({price, idCar}) => {
                     Салон: Черный.
                 </div>
                 <div className="basket-item__about__row">
-                    Сумма: 340555 бел.руб.
+                    Сумма: {price} бел.руб.
                 </div>
             </div>
 

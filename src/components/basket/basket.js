@@ -12,12 +12,13 @@ const Basket = () => {
     const orders = useSelector(state => state.order.order);
     useEffect(() => dispatch(getOrder()),[]);
     const currentOrders = (orders.length && orders.filter(o => o.id_user == user.id_user)) || [];
+    debugger;
 
     return (
         <div className="basket">
             <div className="basket__column">
                 <span className="basket__column__title">Бронирование</span>
-                {<BasketItem price={currentOrders[currentOrders.length-1].price} idCar={currentOrders[currentOrders.length-1].id_car}/>}
+                {<BasketItem price={currentOrders.length && currentOrders[currentOrders.length-2].price} idCar={currentOrders.length && currentOrders[currentOrders.length-2].id_car}/>}
             </div>
             <div className="basket__column">
                 <div >Автомобиль будет забронирован на имя:</div>

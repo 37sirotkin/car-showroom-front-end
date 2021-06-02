@@ -8,7 +8,7 @@ import {getCars} from "../../redux/actions/carActions";
 import TestDriveCarItem from "./test-drive-car-item";
 
 
-const TestDriveCar = ({setSelectCar, selectCar}) => {
+const TestDriveCar = ({setSelectCar, selectCar, setTabActiveKey}) => {
     const dispatch = useDispatch();
     useEffect(() => dispatch(getMarks()), []);
     useEffect(() => dispatch(getCars()), []);
@@ -26,6 +26,7 @@ const TestDriveCar = ({setSelectCar, selectCar}) => {
         const findMark = marks.find(mark => mark.name === value).mark_id;
         const selectedCars = cars.filter(car => car.markMarkId === findMark);
         setViewCars(selectedCars);
+
     }
     return (
         <div className="test-drive-car">
@@ -47,7 +48,8 @@ const TestDriveCar = ({setSelectCar, selectCar}) => {
                                               model={car.model}
                                               carId={car.id_car}
                                               setSelectCar={setSelectCar}
-                                              selected={car.id_car === selectCar}/>)
+                                              selected={car.id_car === selectCar}
+                                              setTabActiveKey={setTabActiveKey}/>)
 
                     }
                 </div>

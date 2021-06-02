@@ -142,6 +142,7 @@ const HomePage = ({setSelectedMark}) => {
                             onClick={() => <NavLink to="/testDrive"/>}>Записаться</Button>
 
 
+
                 </div>
                 <div className="img-test-drive">
                     <img src={repairCarLogo} alt="repair-car-logo"/>

@@ -14,6 +14,12 @@ const TestDrive = () => {
     const [selectCar, setSelectCar] = useState(0);
     const [selectPath, setSelectPath] = useState();
     const [selectTime, setSelectTime] = useState();
+    const [tabActiveKey, setTabActiveKey] = useState('1');
+
+    const changeTab = () => {
+
+    }
+
     console.log(selectCar);
     return (
         <div className="test-drive">
@@ -21,18 +27,18 @@ const TestDrive = () => {
                 ЗАПИСЬ НА ТЕСТ-ДРАЙВ
             </h2>
             <div className="test-drive__tabs">
-                <Tabs defaultActiveKey="1">
-                    <TabPane tab={<span><EditOutlined/>Audi</span>} key="1">
-                        <TestDriveCar selectCar={selectCar} setSelectCar={setSelectCar}/>
+                <Tabs activeKey={tabActiveKey} defaultActiveKey="1">
+                    <TabPane  tab={<span onClick={() => setTabActiveKey("1")}><EditOutlined/>Audi</span>} key="1">
+                        <TestDriveCar setTabActiveKey={setTabActiveKey} selectCar={selectCar} setSelectCar={setSelectCar}/>
                     </TabPane>
-                    <TabPane tab={<span><NodeIndexOutlined/>Маршрут</span>} key="2">
-                        <TestDrivePath selectPath={selectPath} setSelectPath={setSelectPath}/>
+                    <TabPane tab={<span onClick={() => setTabActiveKey("2")}><NodeIndexOutlined/>Маршрут</span>} key="2">
+                        <TestDrivePath setTabActiveKey={setTabActiveKey} selectPath={selectPath} setSelectPath={setSelectPath}/>
                     </TabPane>
-                    <TabPane tab={<span><CalendarOutlined/>Дата и время</span>} key="3">
-                        <TestDriveTime setSelectTime={setSelectTime}/>
+                    <TabPane tab={<span onClick={() => setTabActiveKey("3")}><CalendarOutlined/>Дата и время</span>} key="3">
+                        <TestDriveTime setTabActiveKey={setTabActiveKey} setSelectTime={setSelectTime}/>
                     </TabPane>
-                    <TabPane tab={<span><UserOutlined/>Контактные данные</span>} key="4">
-                        <TestDriveData selectCar={selectCar} selectPath={selectPath} selectTime={selectTime}/>
+                    <TabPane tab={<span onClick={() => setTabActiveKey("4")}><UserOutlined/>Контактные данные</span>} key="4">
+                        <TestDriveData setTabActiveKey={setTabActiveKey} selectCar={selectCar} selectPath={selectPath} selectTime={selectTime}/>
                     </TabPane>
                 </Tabs>
             </div>

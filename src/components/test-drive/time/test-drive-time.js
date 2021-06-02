@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import "./test-drive-time.scss";
 import {Button, Calendar} from "antd";
 
-const TestDriveTime = ({setSelectTime}) => {
+const TestDriveTime = ({setSelectTime, setTabActiveKey}) => {
 
     const [chooseDay, setChooseDay] = useState("2021-05-31");
     const [chooseTime, setChooseTime] = useState("9:00");
@@ -39,6 +39,7 @@ const TestDriveTime = ({setSelectTime}) => {
                     {availableTime.map(item => <Button className="btn-item" onClick={() => {
                         setChooseTime(item);
                         setSelectTime(`${chooseDay} ${chooseTime}`)
+                        setTabActiveKey("4");
                     }
                     }>{item}</Button>)}
                 </div>
