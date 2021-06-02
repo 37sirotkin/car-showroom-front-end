@@ -10,7 +10,7 @@ const TestDriveCarItem = ({img, mark, model, price, carId, setSelectCar, selecte
     return (
         <div onClick={() => {
             setSelectCar(carId);
-            setTabActiveKey("2")
+            setTabActiveKey("2");
         }
         } className={`test-drive-car-item ${selected ? "active-card" : ''}`}>
             <Card

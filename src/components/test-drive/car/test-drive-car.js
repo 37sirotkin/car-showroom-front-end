@@ -60,7 +60,8 @@ const TestDriveCar = ({setSelectCar, selectCar, setTabActiveKey}) => {
                                               mark={selectMark} model={car.model}
                                               carId={car.id_car}
                                               setSelectCar={setSelectCar}
-                                              selected={car.id_car === selectCar}/>)
+                                              selected={car.id_car === selectCar}
+                                              setTabActiveKey={setTabActiveKey}/>)
                     }
                 </div>
                 <div className="test-drive-car__items__row">
@@ -70,7 +71,8 @@ const TestDriveCar = ({setSelectCar, selectCar, setTabActiveKey}) => {
                                               mark={selectMark} model={car.model}
                                               carId={car.id_car}
                                               setSelectCar={setSelectCar}
-                                              selected={car.id_car === selectCar}/>)
+                                              selected={car.id_car === selectCar}
+                                              setTabActiveKey={setTabActiveKey}/>)
                     }
                 </div>
                 <div className="test-drive-car__items__row">
@@ -80,7 +82,8 @@ const TestDriveCar = ({setSelectCar, selectCar, setTabActiveKey}) => {
                                               mark={selectMark} model={car.model}
                                               carId={car.id_car}
                                               setSelectCar={setSelectCar}
-                                              selected={car.id_car === selectCar}/>)
+                                              selected={car.id_car === selectCar}
+                                              setTabActiveKey={setTabActiveKey}/>)
                     }
                 </div>
             </div>
