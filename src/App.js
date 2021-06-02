@@ -19,6 +19,7 @@ import MainChart from "./components/charts/main-chart/main-chart";
 import LoginIn from "./components/login-in/login-in";
 import { signUp } from "./components/redux/actions/securityAction";
 import CustomizeChart from "./components/charts/customize-chart/customize-chart";
+import AllCars from "./components/all-cars/all-cars";
 
 
 function App() {
@@ -49,13 +50,14 @@ function App() {
                             <Route exact path="/main-chart" component={MainChart}/>
                             <Route exact path="/login-in" component={LoginIn}/>
                             <Route exact path="/customize-chart" component={CustomizeChart}/>
+                            <Route exact path="/all-cars" component={AllCars}/>
                         </Switch>
                     </div>
                     <Footer className="Footer"/>
                 </div>
             </Router>}
 
-            {!logged && signupChecked && <LoginIn></LoginIn>}
+            {!logged && signupChecked && <LoginIn/>}
         </div>
     );
 }

@@ -14,15 +14,16 @@ const Header = () => {
     const catalog = (
         <Menu>
             <Menu.Item>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+                <NavLink to="/all-cars">
                     Автомобили
-                </a>
+                </NavLink>
             </Menu.Item>
             <Menu.Item>
                 <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
                     Запасные части
                 </a>
             </Menu.Item>
+
         </Menu>
     )
 
