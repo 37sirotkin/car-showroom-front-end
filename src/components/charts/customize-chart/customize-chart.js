@@ -26,8 +26,6 @@ const CustomizeChart = () => {
     const [selectMark, setSelectMark] = useState();
     const [allLabels, setLabels] = useState(null);
     const [allData, setAllData] = useState(null);
-    const labels = ["A4", "A5", "A6", "Q3", "RS 5", "RS 7"]
-    const allData1 = ["22","12", "4", "6", "3", "2"];
 
     const onChangeDateFrom = (value) => {
         setDateFrom(value.format("YYYY-MM-DD"))
@@ -39,27 +37,46 @@ const CustomizeChart = () => {
     }
 
     const data = [];
-    const label = [];
+
 
     const onChangeMark = (value) => {
         const markId = marks.filter(m => m.name == value)
-        setSelectMark(markId.mark_id);
-        console.log(value);
+        setSelectMark(markId[0].mark_id);
+        console.log(markId[0].mark_id);
     }
 
     const buildChart = () => {
-        const sortDate = orders.sort((dateFrom, dateTo) => {
-            return new Date(dateFrom) - new Date(dateTo)
-            }
-        )
-        const sortCars = cars.filter(c => c.markMarkId == selectMark)
-        const sortMark = sortDate.filter(o => o.id_car == sortCars.id_car);
-        sortMark.forEach(m => {
-            label.push(m.model)
+        // const sortDate = orders.sort((dateFrom, dateTo) => {
+        //     return new Date(dateFrom) - new Date(dateTo)
+        //     }
+        // )
+        const sortCars = cars.filter(c => c.markMarkId == selectMark);
+        let label = [];
+        sortCars.forEach(c => {
+            orders.forEach(o => {
+                if(c.id_car == o.id_car) {
+                    if(label.find(l => l.label == c.model)){
+                        return
+                    } else {
+                        label.push({
+                            label: c.model,
+                            value: dataValue(1,20)
+                        });
+                    }
+
+
+
+                }
+            })
         })
+        const sortMark = sortCars.filter(c => c.id_car == orders.id_car);
+        console.log(orders);
+        // console.log(sortMark);
 
-
-
+        // sortCars.forEach(m => {
+        //     label.push(m.model)
+        // })
+        setLabels(label)
     }
 
 
@@ -87,9 +104,8 @@ const CustomizeChart = () => {
                 </div>
             </div>
             <div className="customize-chart__row">
-                <Button onClick={() => {
-                    setLabels(labels);
-                    setAllData(allData1);
+                <Button type="submit" onClick={() => {
+                    buildChart();
                 }} className="btn-main">Обновить</Button>
             </div>
             <div className="customize-chart__row">
@@ -99,10 +115,10 @@ const CustomizeChart = () => {
                         width={400}
                         height={600}
                         data={{
-                            labels: allLabels,
+                            labels: allLabels.map(l => l.label),
                             datasets: [{
                                 label: 'Отчет по маркам',
-                                data: allData,
+                                data: allLabels.map(l => l.value),
                                 backgroundColor: [
                                     'rgb(255, 99, 132)',
                                     'rgb(54, 162, 235)',
@@ -119,6 +135,12 @@ const CustomizeChart = () => {
 
         </div>
     )
+
+    function dataValue(min, max) {
+        // получить случайное число от (min-0.5) до (max+0.5)
+        let rand = min - 0.5 + Math.random() * (max - min + 1);
+        return Math.round(rand);
+    }
 }
 
 export default CustomizeChart;

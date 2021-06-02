@@ -4,7 +4,7 @@ import {Button, Form, Input, InputNumber} from "antd";
 import {useDispatch} from "react-redux";
 import {postTestDrive} from "../../redux/actions/testDriveAction";
 
-const TestDriveData = ({selectCar, selectPath, selectTime}) => {
+const TestDriveData = ({selectCar, selectPath, selectTime, setTabCarName}) => {
 
     const dispatch = useDispatch();
 

@@ -14,7 +14,9 @@ const TestDrive = () => {
     const [selectCar, setSelectCar] = useState(0);
     const [selectPath, setSelectPath] = useState();
     const [selectTime, setSelectTime] = useState();
+    const [tabCarName, setTabCarName] = useState('Авто');
     const [tabActiveKey, setTabActiveKey] = useState('1');
+
 
     const changeTab = () => {
 
@@ -28,8 +30,8 @@ const TestDrive = () => {
             </h2>
             <div className="test-drive__tabs">
                 <Tabs activeKey={tabActiveKey} defaultActiveKey="1">
-                    <TabPane  tab={<span onClick={() => setTabActiveKey("1")}><EditOutlined/>Audi</span>} key="1">
-                        <TestDriveCar setTabActiveKey={setTabActiveKey} selectCar={selectCar} setSelectCar={setSelectCar}/>
+                    <TabPane  tab={<span onClick={() => setTabActiveKey("1")}><EditOutlined/>{tabCarName}</span>} key="1">
+                        <TestDriveCar setTabCarName={setTabCarName} setTabActiveKey={setTabActiveKey} selectCar={selectCar} setSelectCar={setSelectCar}/>
                     </TabPane>
                     <TabPane tab={<span onClick={() => setTabActiveKey("2")}><NodeIndexOutlined/>Маршрут</span>} key="2">
                         <TestDrivePath setTabActiveKey={setTabActiveKey} selectPath={selectPath} setSelectPath={setSelectPath}/>

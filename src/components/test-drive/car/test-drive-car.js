@@ -8,7 +8,7 @@ import {getCars} from "../../redux/actions/carActions";
 import TestDriveCarItem from "./test-drive-car-item";
 
 
-const TestDriveCar = ({setSelectCar, selectCar, setTabActiveKey}) => {
+const TestDriveCar = ({setSelectCar, selectCar, setTabActiveKey, setTabCarName}) => {
     const dispatch = useDispatch();
     useEffect(() => dispatch(getMarks()), []);
     useEffect(() => dispatch(getCars()), []);
@@ -26,6 +26,7 @@ const TestDriveCar = ({setSelectCar, selectCar, setTabActiveKey}) => {
         const findMark = marks.find(mark => mark.name === value).mark_id;
         const selectedCars = cars.filter(car => car.markMarkId === findMark);
         setViewCars(selectedCars);
+        setTabCarName(value);
 
     }
     return (
@@ -33,7 +34,7 @@ const TestDriveCar = ({setSelectCar, selectCar, setTabActiveKey}) => {
             <div className="test-drive-car__input">
                 <AutoComplete
                     className="test-drive-car__input__find-car"
-                    placeholder="Audi"
+                    placeholder="Выберите машину!"
                     options={options}
                     onSelect={markOnChange}
                 />
