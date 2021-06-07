@@ -8,6 +8,11 @@ import {getOrder} from "../../redux/actions/orderAction";
 import {getMarks} from "../../redux/actions/markActions";
 import {getCars} from "../../redux/actions/carActions";
 
+const testFilter = (chartFilter, order) => {
+    return (!chartFilter.dateFrom || new Date(chartFilter.dateFrom) <= new Date(order.date_of_order))
+        && (!chartFilter.dateTo || new Date(chartFilter.dateTo) >= new Date(order.date_of_order));
+}
+
 const CustomizeChart = () => {
 
     const dispatch = useDispatch();
@@ -21,63 +26,48 @@ const CustomizeChart = () => {
         dispatch(getCars())
     }, [])
 
-    const [dateFrom, setDateFrom] = useState();
-    const [dateTo, setDateTo] = useState();
-    const [selectMark, setSelectMark] = useState();
-    const [allLabels, setLabels] = useState(null);
-    const [allData, setAllData] = useState(null);
+    const [chartFilter, setChartFilter] = useState({});
 
     const onChangeDateFrom = (value) => {
-        setDateFrom(value.format("YYYY-MM-DD"))
-        console.log("FROM: " + value.format("YYYY-MM-DD"))
+        chartFilter.dateFrom = value && value.format("YYYY-MM-DD");
+        setChartFilter({...chartFilter});
     }
     const onChangeDateTo = value => {
-        setDateTo(value.format("YYYY-MM-DD"))
-        console.log("TO: " + value.format("YYYY-MM-DD"))
+        chartFilter.dateTo = value && value.format("YYYY-MM-DD");
+        setChartFilter({...chartFilter});
     }
 
-    const data = [];
-
-
-    const onChangeMark = (value) => {
-        const markId = marks.filter(m => m.name == value)
-        setSelectMark(markId[0].mark_id);
-        console.log(markId[0].mark_id);
+    const onChangeMark = (markId) => {
+        chartFilter.markId = markId;
+        setChartFilter({...chartFilter});
     }
 
-    const buildChart = () => {
-        // const sortDate = orders.sort((dateFrom, dateTo) => {
-        //     return new Date(dateFrom) - new Date(dateTo)
-        //     }
-        // )
-        const sortCars = cars.filter(c => c.markMarkId == selectMark);
-        let label = [];
+    const buildChart = (chartFilter) => {
+        const sortCars = chartFilter.markId 
+            ? cars.filter(c => c.markMarkId == chartFilter.markId)
+            : cars;
+
+        let labels = {};
         sortCars.forEach(c => {
             orders.forEach(o => {
-                if(c.id_car == o.id_car) {
-                    if(label.find(l => l.label == c.model)){
-                        return
-                    } else {
-                        label.push({
+                if(c.id_car == o.id_car && testFilter(chartFilter, o)) {
+                    let label = labels[c.model];
+                    if (!label) {
+                        label = {
                             label: c.model,
-                            value: dataValue(1,20)
-                        });
+                            value: 0
+                        };
+                        labels[c.model] = label;
                     }
-
-
-
+                    label.value++;
                 }
             })
         })
-        const sortMark = sortCars.filter(c => c.id_car == orders.id_car);
-        console.log(orders);
-        // console.log(sortMark);
-
-        // sortCars.forEach(m => {
-        //     label.push(m.model)
-        // })
-        setLabels(label)
+        return Object.values(labels);
     }
+
+    debugger;
+    const data = buildChart(chartFilter);
 
 
     return (
@@ -98,16 +88,12 @@ const CustomizeChart = () => {
                     </Select>
                 </div>
                 <div className="customize-chart__row__input">
-                    <Select onChange={onChangeMark} defaultValue="Aston Martin" style={{width: '120px'}}>
-                        {marks.length && marks.map(m => <Option value={m.name}>{m.name}</Option>)}
+                    <Select onChange={onChangeMark} style={{width: '120px'}}>
+                        {marks.length && marks.map(m => <Option value={m.mark_id}>{m.name}</Option>)}
                     </Select>
                 </div>
             </div>
-            <div className="customize-chart__row">
-                <Button type="submit" onClick={() => {
-                    buildChart();
-                }} className="btn-main">Обновить</Button>
-            </div>
+
             <div className="customize-chart__row">
                 <div className="customize-chart__row__chart">
                     <Bar
@@ -115,10 +101,10 @@ const CustomizeChart = () => {
                         width={400}
                         height={600}
                         data={{
-                            labels: allLabels.map(l => l.label),
+                            labels: data.map(l => l.label),
                             datasets: [{
                                 label: 'Отчет по маркам',
-                                data: allLabels.map(l => l.value),
+                                data: data.map(l => l.value),
                                 backgroundColor: [
                                     'rgb(255, 99, 132)',
                                     'rgb(54, 162, 235)',
