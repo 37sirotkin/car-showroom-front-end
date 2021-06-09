@@ -1,0 +1,24 @@
+.login-in {
+    width: 100%;
+    max-width: 1200px;
+    margin: 15% auto;
+    display: flex;
+    justify-content: center;
+    &__form {
+        width: 50%;
+    }
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+    background: #07b395;
+    border-color: #0f6957;
+}
+
+.button-block {
+    display: flex;
+}
+
+.btn-new-acc {
+    margin-left: 15px;
+}
+

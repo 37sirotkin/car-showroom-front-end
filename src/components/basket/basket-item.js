@@ -2,24 +2,35 @@ import React, {useEffect} from "react";
 import "./basket-item.scss";
 import {useDispatch, useSelector} from "react-redux";
 import {getCars} from "../redux/actions/carActions";
+import {getMarks} from "../redux/actions/markActions";
+import {Checkbox} from "antd";
 
-const BasketItem = ({price, idCar}) => {
+const BasketItem = ({price, idCar, setCheckedCars, checkedCar}) => {
 
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getCars());
+        dispatch(getMarks());
 
-    },[])
-    const cars = useSelector(state => state.cars.cars)
-    const imgCar = cars.length && idCar.length && cars.find(car => car.id_car == idCar).img;
+    }, [])
+    const cars = useSelector(state => state.cars.cars);
+    const marks = useSelector(state => state.marks.marks);
+    const currentCar = cars.length && cars.find(car => car.id_car == idCar);
+    const markCar = currentCar && marks.length && marks.find(mark => mark.mark_id == currentCar.markMarkId).name;
+    const imgCar = cars.length && cars.find(car => car.id_car == idCar).img;
 
+    const onChangeCheckBox = (e) => {
+        if (e.target.checked) {
+            const checkedList = checkedCar.push()
+        }
+    }
 
     return (
         <div className="basket-item">
             <img className="basket-item__img" src={imgCar} alt="auto-img"/>
             <div className="basket-item__about">
                 <div className="basket-item__about__car-name">
-                    {cars.length &&  idCar.length && cars.find(car => car.id_car == idCar).model}
+                    {markCar} {cars.length && cars.find(car => car.id_car == idCar).model}
                 </div>
                 <div className="basket-item__about__row">
                     Тип двигателя: 35 TFSI.
@@ -44,6 +55,9 @@ const BasketItem = ({price, idCar}) => {
                 </div>
                 <div className="basket-item__about__row">
                     Сумма: {price} бел.руб.
+                </div>
+                <div className="basket-item__about__row">
+                   Выбрать: <Checkbox/>
                 </div>
             </div>
 

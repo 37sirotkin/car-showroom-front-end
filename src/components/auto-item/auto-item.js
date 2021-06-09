@@ -25,7 +25,8 @@ const AutoItem = ({match}) => {
             date_of_order: "2021-05-31",
             id_user: user.id_user,
             id_car: parseInt(autoId, 10),
-            price: 240000
+            price: 240000,
+            status: 0
         }
         dispatch(postOrder(obj))
     }

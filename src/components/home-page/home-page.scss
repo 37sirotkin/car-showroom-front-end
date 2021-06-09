@@ -31,16 +31,13 @@
         box-shadow: 1px 22px 24px -10px rgba(0, 0, 0, 0.4);
       }
 
-      .input-search {
-        -webkit-box-shadow: 1px 22px 24px -10px rgba(0, 0, 0, 0.4);
-        box-shadow: 1px 22px 24px -10px rgba(0, 0, 0, 0.4);
-        width: 50%;
 
-      }
     }
 
     &__all-brands {
       margin-top: 30px;
+
+
 
       .all-brands-title {
         font-size: 35px;
@@ -153,6 +150,7 @@
     &__block {
       margin-top: 25px;
 
+
       &__row {
         display: flex;
         justify-content: space-between;
@@ -161,6 +159,10 @@
         &__item {
           width: 280px;
           height: 220px;
+          &:hover {
+            box-shadow: 0 5px 0 #3a9552;
+            transition: .3s;
+          }
 
           &__img {
             width: 276px;

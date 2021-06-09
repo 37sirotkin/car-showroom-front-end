@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import "./baskey.scss";
 import {Button, Input} from "antd";
 import BasketItem from "./basket-item";
@@ -6,19 +6,22 @@ import {useDispatch, useSelector} from "react-redux";
 import {getOrder} from "../redux/actions/orderAction";
 
 const Basket = () => {
-    const security = useSelector(state => state.security);
-    const {user} = security;
     const dispatch = useDispatch();
+    const security = useSelector(state => state.security);
     const orders = useSelector(state => state.order.order);
+    const [checkedCar, setCheckedCars] = useState([])
     useEffect(() => dispatch(getOrder()),[]);
+    const {user} = security;
     const currentOrders = (orders.length && orders.filter(o => o.id_user == user.id_user)) || [];
-    debugger;
+
 
     return (
         <div className="basket">
             <div className="basket__column">
                 <span className="basket__column__title">Бронирование</span>
-                {<BasketItem price={currentOrders.length && currentOrders[currentOrders.length-2].price} idCar={currentOrders.length && currentOrders[currentOrders.length-2].id_car}/>}
+                {currentOrders.map(o => <BasketItem price={o.price} idCar={o.id_car} setCheckedCars={setCheckedCars}
+                                                    checkedCar={checkedCar} idOrder={o.id_order}
+                                                    statusOrder={o.status}/>)}
             </div>
             <div className="basket__column">
                 <div >Автомобиль будет забронирован на имя:</div>

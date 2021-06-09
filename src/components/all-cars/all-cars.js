@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import "./all-cars.scss";
 import {useDispatch, useSelector} from "react-redux";
 import {getCars} from "../redux/actions/carActions";
-import AllBrandsItem from "../home-page/all-brands/AllBrandsItem";
+import AllBrandsItem from "../home-page/all-brands/all-brands-item";
 import {getMarks} from "../redux/actions/markActions";
 
 const AllCars = () => {

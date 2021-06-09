@@ -3,7 +3,7 @@ import "./home-page.scss";
 import mainLogo from "../../img/mp_main_logo.jpg";
 import {Button, Input, Form, Checkbox} from "antd";
 import {CheckCircleOutlined, SearchOutlined} from "@ant-design/icons";
-import AllBrands from "./all-brands/AllBrands";
+import AllBrands from "./all-brands/all-brands";
 import testDriveLogo from "../../img/mp_test_drive.jpg";
 import repairCarLogo from "../../img/mg_repair_car.jpg";
 import ProfitableOffers from "./profitable-offers/profitable-offers";
@@ -21,16 +21,11 @@ const HomePage = ({setSelectedMark}) => {
                 <img src={mainLogo} alt="main-logo"/>
             </div>
             <div className="car-brands">
-                <div className="car-brands__input-find-car">
-                    <Input className="input-search" placeholder="Введите марку автомобиля" prefix={<SearchOutlined/>}/>
-                    <Button className="btn-main btn-search" type="primary" size="large">
-                        Найти
-                    </Button>
-                </div>
                 <div className="car-brands__all-brands">
                     <div className="all-brands-title">
                         ВСЕ МАРКИ
                     </div>
+
                     <AllBrands setSelectedMark={setSelectedMark}/>
                 </div>
             </div>

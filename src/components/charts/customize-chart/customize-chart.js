@@ -28,7 +28,7 @@ const CustomizeChart = () => {
 
     const [chartFilter, setChartFilter] = useState({});
 
-    const onChangeDateFrom = (value) => {
+    const onChangeDateFrom = value => {
         chartFilter.dateFrom = value && value.format("YYYY-MM-DD");
         setChartFilter({...chartFilter});
     }
@@ -37,7 +37,7 @@ const CustomizeChart = () => {
         setChartFilter({...chartFilter});
     }
 
-    const onChangeMark = (markId) => {
+    const onChangeMark = markId => {
         chartFilter.markId = markId;
         setChartFilter({...chartFilter});
     }
@@ -121,12 +121,6 @@ const CustomizeChart = () => {
 
         </div>
     )
-
-    function dataValue(min, max) {
-        // получить случайное число от (min-0.5) до (max+0.5)
-        let rand = min - 0.5 + Math.random() * (max - min + 1);
-        return Math.round(rand);
-    }
 }
 
 export default CustomizeChart;

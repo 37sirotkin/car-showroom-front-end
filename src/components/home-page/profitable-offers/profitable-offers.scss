@@ -1,6 +1,10 @@
 .profitable-offer-item {
   width: 255px;
   height: 350px;
+  &:hover {
+    box-shadow: 0 5px 0 #3a9552;
+    transition: .3s;
+  }
   &__img {
     width: 255px;
     height: 170px;

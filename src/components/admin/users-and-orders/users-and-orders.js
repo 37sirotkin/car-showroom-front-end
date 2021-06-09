@@ -1,110 +1,13 @@
 import React from "react";
+import UsersAndOrdersAllUsers from "./users/users-and-orders-all-users"
 import "./users-and-orders.scss";
 import {BellOutlined, FileTextOutlined, InfoCircleOutlined, UserOutlined} from "@ant-design/icons";
 import {Button, Table, Tabs} from "antd";
+import UserAndOrdersOrders from "./orders-testDrives-inspections/user-and-orders-orders";
 const {TabPane} = Tabs;
 
-const UsersAndOrders = () => {
 
-    const dataSourceForUsers = [
-        {
-            key: '1',
-            id: '34',
-            name: 'Иван',
-            surname: 'Иванов',
-            bd: '25.04.1995',
-            email: 'ivan.ivanov@mail.ru',
-            phone: '+375257654318',
-            status: "active"
-        },
-        {
-            key: '2',
-            id: '55',
-            name: 'Сергей',
-            surname: 'Мирончук',
-            bd: '13.02.1991',
-            email: 'mironchyk@gmail.com',
-            phone: '+3752599043212',
-            status: "blocked"
-        },
-        {
-            key: '3',
-            id: '66',
-            name: 'Юлия',
-            surname: 'Абрамова',
-            bd: '15.02.1998',
-            email: 'abramova@mail.ru',
-            phone: '+375253431265',
-            status: "active"
-        },
-        {
-            key: '4',
-            id: '2',
-            name: 'Максим',
-            surname: 'Кутузов',
-            bd: '12.11.1976',
-            email: 'kytyzov@mail.ru',
-            phone: '+375254326573',
-            status: "active"
-        },
-        {
-            key: '5',
-            id: '22',
-            name: 'Антон',
-            surname: 'Чехов',
-            bd: '02.03.1985',
-            email: 'chehov@yandex.ru',
-            phone: '+3753344532167',
-            status: "active"
-        },
-        {
-            key: '6',
-            id: '89',
-            name: 'Екатерина',
-            surname: 'Чуприс',
-            bd: '22.12.1969',
-            email: 'chypris@mail.ru',
-            phone: '+375295540417',
-            status: "blocked",
-        },
-    ];
-    const columnsForUsers = [
-        {
-            title: 'ID',
-            dataIndex: 'id',
-            key: 'id',
-        },
-        {
-            title: 'Имя',
-            dataIndex: 'name',
-            key: 'name',
-        },
-        {
-            title: 'Фамилия',
-            dataIndex: 'surname',
-            key: 'surname',
-        },
-        {
-            title: 'Дата рождения',
-            dataIndex: 'bd',
-            key: 'bd',
-        },
-        {
-            title: 'Email',
-            dataIndex: 'email',
-            key: 'email',
-        },
-        {
-            title: 'Телефон',
-            dataIndex: 'phone',
-            key: 'phone',
-        },
-        {
-            title: 'Статус',
-            dataIndex: 'status',
-            key: 'status',
-        },
-    ];
+const UsersAndOrders = () => {
 
     const dataSourceForTestDrive = [
         {
@@ -236,12 +139,12 @@ const UsersAndOrders = () => {
         <div className="users-and-orders">
             <Tabs tabPosition="left">
                 <TabPane tab={TabsIcon.tabUsers} key="1">
-                    <Table className="table-item" dataSource={dataSourceForUsers} columns={columnsForUsers}/>
+                    <UsersAndOrdersAllUsers/>
                 </TabPane>
                 <TabPane tab={TabsIcon.tabOrders} key="2">
                     <Tabs tabPosition="top">
                         <TabPane tab="Заказы" key="1">
-
+                            <UserAndOrdersOrders/>
                         </TabPane>
                         <TabPane tab="Заявки на тест-драйв" key="2">
                             <Table className="table-item" dataSource={dataSourceForTestDrive} columns={columnsForTestDrive}/>
