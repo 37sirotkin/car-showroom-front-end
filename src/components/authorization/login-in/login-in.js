@@ -1,12 +1,13 @@
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
-import React from "react";
+import React, {useState} from "react";
 import "./login-in.scss"
 import {useDispatch} from "react-redux";
 import {loginIn} from "../../redux/actions/securityAction";
 import {Button, Input, Form, Checkbox} from "antd";
 import {NavLink} from "react-router-dom";
+import SignUp from "../sign-up/sign-up";
 
-const LoginIn = () => {
+const LoginIn = ({setViewScreen}) => {
 
     const dispatch = useDispatch();
 
@@ -35,9 +36,7 @@ const LoginIn = () => {
     };
 
     return (
-
         <div className="login-in">
-
             <Form
                 {...layout}
                 name="basic"
@@ -73,23 +72,18 @@ const LoginIn = () => {
                 >
                     <Input.Password/>
                 </Form.Item>
-
                 <Form.Item {...tailLayout} name="remember" valuePropName="checked">
                     <Checkbox>Remember me</Checkbox>
                 </Form.Item>
-
                 <Form.Item {...tailLayout}>
                     <div className="button-block">
                         <Button className="btn-main" type="primary" htmlType="submit">
                             Войти
                         </Button>
-
-                        <Button className="btn-main btn-new-acc">
+                        <Button onClick={() => setViewScreen('sign-up')} className="btn-main btn-new-acc">
                             Создать аккаунт
                         </Button>
-
                     </div>
-
                 </Form.Item>
             </Form>
         </div>

@@ -46,7 +46,7 @@ const MyAccountProfile = () => {
 
     const carName = (order) => {
         const currentCar = cars.length && cars.find(c => c.id_car == order.id_car);
-        const currentMark = marks.length && marks.find(m => m.mark_id == currentCar.markMarkId);
+        const currentMark = marks && marks.length && marks.find(m => m.mark_id == currentCar.markMarkId);
         return `${currentMark.name} ${currentCar.model}`
 
     }

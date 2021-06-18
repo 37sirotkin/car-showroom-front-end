@@ -12,3 +12,4 @@ export const POST_INSPECTION = "POST_INSPECTION";
 export const GET_ORDER = "GET_ORDER";
 export const POST_ORDER = "POST_ORDER";
 export const LOG_OUT = "LOG_OUT";
+export const CREATE_USER = "CREATE_USER";

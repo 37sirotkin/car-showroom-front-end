@@ -19,6 +19,7 @@ import {signUp} from "./components/redux/actions/securityAction";
 import CustomizeChart from "./components/charts/customize-chart/customize-chart";
 import AllCars from "./components/all-cars/all-cars";
 import SignUp from "./components/authorization/sign-up/sign-up";
+import Authorization from "./components/authorization/authorization";
 
 
 function App() {
@@ -56,7 +57,7 @@ function App() {
                     <Footer className="Footer"/>
                 </div>
             </Router>}
-            {!logged && signupChecked && <LoginIn/>}
+            {!logged && signupChecked && <Authorization/>}
         </div>
     );
 }
