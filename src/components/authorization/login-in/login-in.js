@@ -48,7 +48,7 @@ const LoginIn = ({setViewScreen}) => {
                 className="login-in__form"
             >
                 <Form.Item
-                    label="Username"
+                    label="Email"
                     name="username"
                     rules={[
                         {
@@ -61,7 +61,7 @@ const LoginIn = ({setViewScreen}) => {
                 </Form.Item>
 
                 <Form.Item
-                    label="Password"
+                    label="Пароль"
                     name="password"
                     rules={[
                         {
@@ -73,7 +73,7 @@ const LoginIn = ({setViewScreen}) => {
                     <Input.Password/>
                 </Form.Item>
                 <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-                    <Checkbox>Remember me</Checkbox>
+                    <Checkbox>Запомнить меня</Checkbox>
                 </Form.Item>
                 <Form.Item {...tailLayout}>
                     <div className="button-block">
