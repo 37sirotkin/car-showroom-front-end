@@ -4,9 +4,11 @@ import {DownOutlined, MenuOutlined, ShoppingCartOutlined, UserOutlined} from "@a
 import {Button, Dropdown, Menu} from "antd";
 import {NavLink} from "react-router-dom";
 import mainLogo from "../../img/main_logo.jpg"
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {logOut} from "../redux/actions/securityAction";
 
 const Header = () => {
+    const dispatch = useDispatch()
 
     const security = useSelector(state => state.security);
     const {user} = security;
@@ -37,9 +39,19 @@ const Header = () => {
                 </div>
                 <div className="buttons-menu">
                     <div className="btn-header">
-                        <NavLink to="/myAccount">
-                            <UserOutlined className="btn-header__icon"/>
-                        </NavLink>
+                        {
+                            user.email === 'guest' ?
+                                <UserOutlined onClick={() => {
+                                    dispatch(logOut())
+                                    window.location.reload();
+                                }
+
+                                } className="btn-header__icon"/> :
+                                <NavLink to="/myAccount">
+                                    <UserOutlined className="btn-header__icon"/>
+                                </NavLink>
+                        }
+
                     </div>
                     <div className="btn-header">
                         <NavLink to="/basket">

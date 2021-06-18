@@ -83,6 +83,14 @@ const LoginIn = ({setViewScreen}) => {
                         <Button onClick={() => setViewScreen('sign-up')} className="btn-main btn-new-acc">
                             Создать аккаунт
                         </Button>
+
+                        <Button onClick={async () => {
+                            await dispatch(loginIn('guest', '0000'))
+
+                        }} className="btn-main btn-new-acc">
+                            Войти как гость
+                        </Button>
+
                     </div>
                 </Form.Item>
             </Form>

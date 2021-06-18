@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./sign-up.scss";
 import {Button, Checkbox, Form, Input} from "antd";
-import {loginIn} from "../../redux/actions/securityAction";
+import {loginIn, logOut} from "../../redux/actions/securityAction";
 import {useDispatch} from "react-redux";
 import {createUser} from "../../redux/actions/authorizationAction";
 
@@ -24,18 +24,24 @@ const SignUp = ({setViewScreen}) => {
         },
     };
 
-    const onFinish = (values) => {
+    const onFinish = async (values) => {
         const newUser = {
             first_name: values.firstname,
             surname: values.surname,
             email: values.email,
-            password: values.password,
+            pass: Number(values.password),
             phone: values.phone,
             birthday: values.dateOfBirth,
             id_status: 3,
-            blocked: false
+            blocked: false,
+            login: values.email
         }
-        dispatch(createUser(newUser));
+        await dispatch(loginIn('guest', '0000'));
+        await dispatch(createUser(newUser));
+        await dispatch(logOut());
+        await window.location.reload();
+        await dispatch(loginIn(values.email, values.password));
+        alert('Вы успешно создали аккаунт')
     };
 
     const onFinishFailed = (errorInfo) => {
