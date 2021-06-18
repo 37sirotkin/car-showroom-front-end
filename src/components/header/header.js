@@ -54,9 +54,19 @@ const Header = () => {
 
                     </div>
                     <div className="btn-header">
-                        <NavLink to="/basket">
-                            <ShoppingCartOutlined className="btn-header__icon"/>
-                        </NavLink>
+                        {
+                            user.email === 'guest' ?
+                                <ShoppingCartOutlined onClick={() => {
+                                    dispatch(logOut())
+                                    window.location.reload();
+                                }
+
+                                } className="btn-header__icon"/> :
+                                <NavLink to="/basket">
+                                    <ShoppingCartOutlined className="btn-header__icon"/>
+                                </NavLink>
+                        }
+
                     </div>
                     <div className="btn-header">
                         <MenuOutlined className="btn-header__icon"/>
@@ -74,64 +84,67 @@ const Header = () => {
                     </NavLink>
                 </div>
                 <div className="dropdown-menu">
-                    <Dropdown className="dropdown-item" overlay={<Menu>
-                        <Menu.Item>
-                            <NavLink to="/testDrive">
-                                Запись на тест-драйв
-                            </NavLink>
-                        </Menu.Item>
-                        <Menu.Item>
-                            <NavLink to="/inspection">
-                                Запись на ТО
-                            </NavLink>
-                        </Menu.Item>
-                        {
-                            user.type == 2 ?
-                                (
+                    {
+                        user.email != 'guest' ?<Dropdown className="dropdown-item" overlay={<Menu>
                             <Menu.Item>
-                            <NavLink to="/customize-chart">
-                                Отчеты
-                            </NavLink>
-                            </Menu.Item>) : null
+                                <NavLink to="/testDrive">
+                                    Запись на тест-драйв
+                                </NavLink>
+                            </Menu.Item>
+                            <Menu.Item>
+                                <NavLink to="/inspection">
+                                    Запись на ТО
+                                </NavLink>
+                            </Menu.Item>
+                            {
+                                user.type == 2 ?
+                                    (
+                                        <Menu.Item>
+                                            <NavLink to="/customize-chart">
+                                                Отчеты
+                                            </NavLink>
+                                        </Menu.Item>) : null
 
-                        }
-                        {
-                            user.type == 2 ?
-                                (
-                                    <Menu.Item>
-                                        <NavLink to="/main-chart">
-                                            Статистика
-                                        </NavLink>
-                                    </Menu.Item>) : null
+                            }
+                            {
+                                user.type == 2 ?
+                                    (
+                                        <Menu.Item>
+                                            <NavLink to="/main-chart">
+                                                Статистика
+                                            </NavLink>
+                                        </Menu.Item>) : null
 
-                        }
-                        {
-                            user.type == 2 ?
-                                (
-                                    <Menu.Item>
-                                        <NavLink to="/add-car">
-                                            Добавить автомобиль
-                                        </NavLink>
-                                    </Menu.Item>) : null
+                            }
+                            {
+                                user.type == 2 ?
+                                    (
+                                        <Menu.Item>
+                                            <NavLink to="/add-car">
+                                                Добавить автомобиль
+                                            </NavLink>
+                                        </Menu.Item>) : null
 
-                        }
-                        {
-                            user.type == 3 ?
-                                (
-                                    <Menu.Item>
-                                        <NavLink to="/users-and-orders">
-                                            Таблицы
-                                        </NavLink>
-                                    </Menu.Item>) : null
+                            }
+                            {
+                                user.type == 3 ?
+                                    (
+                                        <Menu.Item>
+                                            <NavLink to="/users-and-orders">
+                                                Таблицы
+                                            </NavLink>
+                                        </Menu.Item>) : null
 
-                        }
+                            }
 
 
-                    </Menu>}>
-                        <Button>
-                            УСЛУГИ <DownOutlined/>
-                        </Button>
-                    </Dropdown>
+                        </Menu>}>
+                            <Button>
+                                УСЛУГИ <DownOutlined/>
+                            </Button>
+                        </Dropdown> : null
+                    }
+
                     <Dropdown className="dropdown-item" overlay={catalog}>
                         <Button>
                             КАТАЛОГ <DownOutlined/>
